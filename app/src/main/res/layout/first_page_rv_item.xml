@@ -3,7 +3,6 @@
 <ImageView android:id="@+id/img_first_page_rv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginRight="16dp"
-    android:layout_marginLeft="16dp"
+   android:layout_margin="16dp"
     android:src="@drawable/teh"
     xmlns:android="http://schemas.android.com/apk/res/android"></ImageView>
