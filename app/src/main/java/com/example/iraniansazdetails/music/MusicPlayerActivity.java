@@ -260,6 +260,7 @@ public class MusicPlayerActivity extends Fragment {
                 txt.setText("تهران و حومه");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.teh,null));
                 break;
+
             case 1:
                 filePath.add(0,"1");
                 filePath.add(1,"http://192.168.10.184:8099/azari/azari.mp3");
