@@ -38,6 +38,7 @@ import com.google.android.exoplayer2.util.Util;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -74,8 +75,8 @@ public class MusicPlayerActivity extends Fragment {
     private void setUpView() {
 
         isPlay=false;
-        String fileName=getUrl();
-        Uri uri=Uri.parse(fileName);
+        ArrayList<String> list=getUrl();
+
 
         String a="file:///android_asset/bet.mp3";
         Uri uri1=Uri.parse(a);
@@ -96,75 +97,97 @@ public class MusicPlayerActivity extends Fragment {
         //exoPlayer.prepare(mediaSource);
     }
 
-    public String getUrl()
+    public ArrayList<String> getUrl()
     {
-        String fileName=null;
+        ArrayList<String> filePath=new ArrayList<>();
         prefs = this.getActivity().getSharedPreferences("shared", MODE_PRIVATE);
         int id=prefs.getInt("id",0);
         switch (id)
         {
             case 0:
-                fileName="file:///android_asset/sorna.mp3";
+                filePath.add(0,"http://192.168.10.184:8099/teh/teh.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/azari/teh1.mp3");
                 txt.setText("تهران و حومه");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.teh,null));
                 break;
             case 1:
-                fileName="file:///android_asset/bet.mp3";
+                filePath.add(0,"http://192.168.10.184:8099/azari/azari.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/azari/sari_galin.mp3");
                 txt.setText("ترک های ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.turk,null));
                 break;
             case 2:
-                fileName="file:///android_asset/hungarian_dance.mp3";
+                filePath.add(0,"http://192.168.10.184:8099/kurdi/kurdi.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/kurdi/kurdi1.mp3");
                 txt.setText("کردهای ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.kurd,null));
                 break;
             case 3:
-                fileName="file:///android_asset/hungarian_dance.mp3";
+                filePath.add(0,"http://192.168.10.184:8099/lori/lor.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/lori/lor1.mp3");
+                filePath.add(2,"http://192.168.10.184:8099/lori/lor2.mp3");
+                filePath.add(3,"http://192.168.10.184:8099/lori/lor3.mp3");
                 txt.setText("لرهای ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.lor,null));
                 break;
             case 4:
-                fileName="file:///android_asset/bet.mp3";
                 txt.setText("موسیقی خراسان");
+                filePath.add(0,"http://192.168.10.184:8099/khorasan/dotar.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/khorasan/jam.mp3");
+                filePath.add(2,"http://192.168.10.184:8099/khorasan/kh_jonobi.mp3");
+                filePath.add(3,"http://192.168.10.184:8099/khorasan/navaie.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.khorasan,null));
                 break;
             case 5:
-                fileName="file:///android_asset/sorna.mp3";
                 txt.setText("موسیقی بختیاری");
+                filePath.add(0,"http://192.168.10.184:8099/bakh/bakh_farhang.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/bakh/shahroz_bakh.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.bakh,null));
                 break;
             case 6:
-                fileName="file:///android_asset/sorna.mp3";
                 txt.setText("موسیقی کولیان ایران");
+                filePath.add(0,"http://192.168.10.184:8099/koli/koli.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.koli,null));
                 break;
             case 7:
-                fileName="file:///android_asset/sorna.mp3";
                 txt.setText("موسیقی مازندران");
+                filePath.add(0,"http://192.168.10.184:8099/mazani/mazani.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/mazani/mazani1.mp3");
+                filePath.add(2,"http://192.168.10.184:8099/mazani/mazani2.mp3");
+                filePath.add(3,"http://192.168.10.184:8099/mazani/mazani3.mp3");
+                filePath.add(4,"http://192.168.10.184:8099/mazani/mazani4.mp3");
+                filePath.add(5,"http://192.168.10.184:8099/mazani/mazani5.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.mazandaran,null));
                 break;
             case 8:
-                fileName="file:///android_asset/sorna.mp3";
+                filePath.add(0,"http://192.168.10.184:8099/gilan/gilan.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/gilan/gilan1.mp3");
+                filePath.add(2,"http://192.168.10.184:8099/gilan/gilan2.mp3");
                 txt.setText("موسیقی گیلان و تالش");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.gilan,null));
                 break;
             case 9:
-                fileName="file:///android_asset/sorna.mp3";
+                filePath.add(0,"http://192.168.10.184:8099/sis/baloch_sisi.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/sis/balochi.mp3");
+                filePath.add(2,"http://192.168.10.184:8099/sis/balochi1.mp3");
+                filePath.add(3,"http://192.168.10.184:8099/sis/sis.mp3");
                 txt.setText("موسیقی سیستان و بلوچستان");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.sis,null));
                 break;
             case 10:
-                fileName="file:///android_asset/sorna.mp3";
+                filePath.add(0,"http://192.168.10.184:8099/turkaman/turkaman.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/turkaman/turkaman1.mp3");
                 txt.setText("موسیقی ترکمن های ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.turkaman,null));
                 break;
             case 11:
-                fileName="file:///android_asset/sorna.mp3";
+                filePath.add(0,"http://192.168.10.184:8099/golestan/katol.mp3");
+                filePath.add(1,"http://192.168.10.184:8099/golestan/katol1.mp3");
                 txt.setText("موسسیقی گلستان");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.golestan,null));
                 break;
         }
-        return fileName;
+        return filePath;
     }
 
     @Override
