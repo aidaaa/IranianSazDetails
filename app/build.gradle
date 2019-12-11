@@ -20,6 +20,7 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+    compileOptions.incremental = false
 }
 
 dependencies {
@@ -39,5 +40,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
-    implementation 'com.google.dagger:dagger:2.25.2'
+    implementation 'com.google.dagger:dagger:2.16'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
 }

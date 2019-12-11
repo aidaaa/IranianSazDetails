@@ -43,14 +43,18 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.inject.Inject;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class MusicPlayerActivity extends Fragment {
 
     private View view;
     //PlayerControlView music_player;
-    PlayerControlView music_player;
-    SimpleExoPlayer exoPlayer;
+    public  PlayerControlView music_player;
+
+     public  SimpleExoPlayer exoPlayer;
+
     Context context;
     boolean isPlay=true;
     SharedPreferences prefs;
@@ -84,7 +88,7 @@ public class MusicPlayerActivity extends Fragment {
         music_player=view.findViewById(R.id.music_player_view);
         music_player.setPlayer(exoPlayer);
 
-        ConcatenatingMediaSource concatenatingMediaSource;
+        ConcatenatingMediaSource concatenatingMediaSource=new ConcatenatingMediaSource();
 
         DataSource.Factory daFactory=new DefaultDataSourceFactory(context, Util.getUserAgent(context,"exoplayer"));
 
@@ -97,7 +101,8 @@ public class MusicPlayerActivity extends Fragment {
                 Uri uri2= Uri.parse(path2);
                 MediaSource mediaSource=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri1);
                 MediaSource mediaSource1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri2);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource,mediaSource1);
+                concatenatingMediaSource.addMediaSource(0,mediaSource);
+                concatenatingMediaSource.addMediaSource(1,mediaSource1);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "1":
@@ -107,7 +112,8 @@ public class MusicPlayerActivity extends Fragment {
                 Uri uri_azari_1= Uri.parse(path_azari_1);
                 MediaSource mediaSource_azari=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_azari);
                 MediaSource mediaSource_azari_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_azari_1);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_azari,mediaSource_azari_1);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_azari);
+                concatenatingMediaSource.addMediaSource(1,mediaSource_azari_1);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "2":
@@ -117,7 +123,8 @@ public class MusicPlayerActivity extends Fragment {
                 Uri uri_kord_1= Uri.parse(path_kord_1);
                 MediaSource mediaSource_kord=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_kord);
                 MediaSource mediaSource_kord_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_kord_1);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_kord,mediaSource_kord_1);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_kord);
+                concatenatingMediaSource.addMediaSource(1,mediaSource_kord_1);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "3":
@@ -133,7 +140,10 @@ public class MusicPlayerActivity extends Fragment {
                 MediaSource mediaSource_lor_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_lor_1);
                 MediaSource mediaSource_lor_2=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_lor_2);
                 MediaSource mediaSource_lor_3=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_lor_3);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_lor,mediaSource_lor_1,mediaSource_lor_2,mediaSource_lor_3,mediaSource_lor_3);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_lor);
+                concatenatingMediaSource.addMediaSource(1,mediaSource_lor_1);
+                concatenatingMediaSource.addMediaSource(2,mediaSource_lor_2);
+                concatenatingMediaSource.addMediaSource(3,mediaSource_lor_3);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "4":
@@ -149,7 +159,10 @@ public class MusicPlayerActivity extends Fragment {
                 MediaSource mediaSource_khorasan_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_khorasan_1);
                 MediaSource mediaSource_khorasan_2=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_khorasan_2);
                 MediaSource mediaSource_khorasan_3=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_khorasan_3);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_khorasan,mediaSource_khorasan_1,mediaSource_khorasan_2,mediaSource_khorasan_3);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_khorasan);
+                concatenatingMediaSource.addMediaSource(1,mediaSource_khorasan_1);
+                concatenatingMediaSource.addMediaSource(2,mediaSource_khorasan_2);
+                concatenatingMediaSource.addMediaSource(3,mediaSource_khorasan_3);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "5":
@@ -159,14 +172,15 @@ public class MusicPlayerActivity extends Fragment {
                 Uri uri_bakh_1= Uri.parse(path_bakh_1);
                 MediaSource mediaSource_bakh=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_bakh);
                 MediaSource mediaSource_bakh_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_bakh_1);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_bakh,mediaSource_bakh_1);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_bakh);
+                concatenatingMediaSource.addMediaSource(1,mediaSource_bakh_1);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "6":
                 String path_koli=list.get(1);
                 Uri uri_koli= Uri.parse(path_koli);
                 MediaSource mediaSource_koli=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_koli);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_koli);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_koli);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "7":
@@ -188,7 +202,12 @@ public class MusicPlayerActivity extends Fragment {
                 MediaSource mediaSource_mazani_3=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_mazani_3);
                 MediaSource mediaSource_mazani_4=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_mazani_4);
                 MediaSource mediaSource_mazani_5=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_mazani_5);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_mazani,mediaSource_mazani_1,mediaSource_mazani_2,mediaSource_mazani_3,mediaSource_mazani_4,mediaSource_mazani_5);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_mazani);
+                concatenatingMediaSource.addMediaSource(1,mediaSource_mazani_1);
+                concatenatingMediaSource.addMediaSource(2,mediaSource_mazani_2);
+                concatenatingMediaSource.addMediaSource(3,mediaSource_mazani_3);
+                concatenatingMediaSource.addMediaSource(4,mediaSource_mazani_4);
+                concatenatingMediaSource.addMediaSource(5,mediaSource_mazani_5);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "8":
@@ -201,7 +220,9 @@ public class MusicPlayerActivity extends Fragment {
                 MediaSource mediaSource_gilan=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_gilan);
                 MediaSource mediaSource_gilan_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_gilan_1);
                 MediaSource mediaSource_gilan_2=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_gilan_2);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_gilan,mediaSource_gilan_1,mediaSource_gilan_2);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_gilan);
+                concatenatingMediaSource.addMediaSource(1,mediaSource_gilan_1);
+                concatenatingMediaSource.addMediaSource(2,mediaSource_gilan_2);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "9":
@@ -217,7 +238,10 @@ public class MusicPlayerActivity extends Fragment {
                 MediaSource mediaSource_sis_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_sis_1);
                 MediaSource mediaSource_sis_2=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_sis_2);
                 MediaSource mediaSource_sis_3=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_sis_3);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_sis,mediaSource_sis_1,mediaSource_sis_2,mediaSource_sis_3);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_sis);
+                concatenatingMediaSource.addMediaSource(1,mediaSource_sis_1);
+                concatenatingMediaSource.addMediaSource(2,mediaSource_sis_2);
+                concatenatingMediaSource.addMediaSource(3,mediaSource_sis_3);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "10":
@@ -227,7 +251,8 @@ public class MusicPlayerActivity extends Fragment {
                 Uri uri_torkaman_1= Uri.parse(path_torkaman_1);
                 MediaSource mediaSource_torkaman=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_torkaman);
                 MediaSource mediaSource_torkaman_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_torkaman_1);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_torkaman,mediaSource_torkaman_1);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_torkaman);
+                concatenatingMediaSource.addMediaSource(1,mediaSource_torkaman_1);
                 exoPlayer.prepare(concatenatingMediaSource);
 
                 break;
@@ -236,9 +261,10 @@ public class MusicPlayerActivity extends Fragment {
                 String path_golestan_1=list.get(2);
                 Uri uri_golestan  = Uri.parse(path_golestan  );
                 Uri uri_golestan_1= Uri.parse(path_golestan_1);
-                MediaSource mediaSource_golestan=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_golestan  );
+                MediaSource mediaSource_golestan=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_golestan);
                 MediaSource mediaSource_golestan_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_golestan_1);
-                concatenatingMediaSource=new ConcatenatingMediaSource(mediaSource_golestan,mediaSource_golestan_1);
+                concatenatingMediaSource.addMediaSource(0,mediaSource_golestan);
+                concatenatingMediaSource.addMediaSource(1,mediaSource_golestan_1);
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
         }
@@ -255,96 +281,96 @@ public class MusicPlayerActivity extends Fragment {
         {
             case 0:
                 filePath.add(0,"0");
-                filePath.add(1,"http://192.168.10.184:8099/teh/teh.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/azari/teh1.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/teh/teh.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/teh/teh1.mp3");
                 txt.setText("تهران و حومه");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.teh,null));
                 break;
 
             case 1:
                 filePath.add(0,"1");
-                filePath.add(1,"http://192.168.10.184:8099/azari/azari.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/azari/sari_galin.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/azari/azari.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/azari/sari_galin.mp3");
                 txt.setText("ترک های ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.turk,null));
                 break;
             case 2:
                 filePath.add(0,"2");
-                filePath.add(1,"http://192.168.10.184:8099/kurdi/kurdi.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/kurdi/kurdi1.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/kurdi/kurdi.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/kurdi/kurdi1.mp3");
                 txt.setText("کردهای ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.kurd,null));
                 break;
             case 3:
                 filePath.add(0,"3");
-                filePath.add(1,"http://192.168.10.184:8099/lori/lor.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/lori/lor1.mp3");
-                filePath.add(3,"http://192.168.10.184:8099/lori/lor2.mp3");
-                filePath.add(4,"http://192.168.10.184:8099/lori/lor3.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/lori/lor.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/lori/lor1.mp3");
+                filePath.add(3,"http://192.168.10.85:8099/lori/lor2.mp3");
+                filePath.add(4,"http://192.168.10.85:8099/lori/lor3.mp3");
                 txt.setText("لرهای ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.lor,null));
                 break;
             case 4:
                 filePath.add(0,"4");
                 txt.setText("موسیقی خراسان");
-                filePath.add(1,"http://192.168.10.184:8099/khorasan/dotar.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/khorasan/jam.mp3");
-                filePath.add(3,"http://192.168.10.184:8099/khorasan/kh_jonobi.mp3");
-                filePath.add(4,"http://192.168.10.184:8099/khorasan/navaie.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/khorasan/dotar.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/khorasan/jam.mp3");
+                filePath.add(3,"http://192.168.10.85:8099/khorasan/kh_jonobi.mp3");
+                filePath.add(4,"http://192.168.10.85:8099/khorasan/navaie.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.khorasan,null));
                 break;
             case 5:
                 filePath.add(0,"5");
                 txt.setText("موسیقی بختیاری");
-                filePath.add(1,"http://192.168.10.184:8099/bakh/bakh_farhang.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/bakh/shahroz_bakh.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/bakh/bakh_farhang.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/bakh/shahroz_bakh.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.bakh,null));
                 break;
             case 6:
                 filePath.add(0,"6");
                 txt.setText("موسیقی کولیان ایران");
-                filePath.add(1,"http://192.168.10.184:8099/koli/koli.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/koli/koli.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.koli,null));
                 break;
             case 7:
                 filePath.add(0,"7");
                 txt.setText("موسیقی مازندران");
-                filePath.add(1,"http://192.168.10.184:8099/mazani/mazani.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/mazani/mazani1.mp3");
-                filePath.add(3,"http://192.168.10.184:8099/mazani/mazani2.mp3");
-                filePath.add(4,"http://192.168.10.184:8099/mazani/mazani3.mp3");
-                filePath.add(5,"http://192.168.10.184:8099/mazani/mazani4.mp3");
-                filePath.add(6,"http://192.168.10.184:8099/mazani/mazani5.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/mazani/mazani.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/mazani/mazani1.mp3");
+                filePath.add(3,"http://192.168.10.85:8099/mazani/mazani2.mp3");
+                filePath.add(4,"http://192.168.10.85:8099/mazani/mazani3.mp3");
+                filePath.add(5,"http://192.168.10.85:8099/mazani/mazani4.mp3");
+                filePath.add(6,"http://192.168.10.85:8099/mazani/mazani5.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.mazandaran,null));
                 break;
             case 8:
                 filePath.add(0,"8");
-                filePath.add(1,"http://192.168.10.184:8099/gilan/gilan.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/gilan/gilan1.mp3");
-                filePath.add(3,"http://192.168.10.184:8099/gilan/gilan2.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/gilan/gilan.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/gilan/gilan1.mp3");
+                filePath.add(3,"http://192.168.10.85:8099/gilan/gilan2.mp3");
                 txt.setText("موسیقی گیلان و تالش");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.gilan,null));
                 break;
             case 9:
                 filePath.add(0,"9");
-                filePath.add(1,"http://192.168.10.184:8099/sis/baloch_sisi.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/sis/balochi.mp3");
-                filePath.add(3,"http://192.168.10.184:8099/sis/balochi1.mp3");
-                filePath.add(4,"http://192.168.10.184:8099/sis/sis.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/sis/baloch_sisi.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/sis/balochi.mp3");
+                filePath.add(3,"http://192.168.10.85:8099/sis/balochi1.mp3");
+                filePath.add(4,"http://192.168.10.85:8099/sis/sis.mp3");
                 txt.setText("موسیقی سیستان و بلوچستان");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.sis,null));
                 break;
             case 10:
                 filePath.add(0,"10");
-                filePath.add(1,"http://192.168.10.184:8099/turkaman/turkaman.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/turkaman/turkaman1.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/turkaman/turkaman.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/turkaman/turkaman1.mp3");
                 txt.setText("موسیقی ترکمن های ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.turkaman,null));
                 break;
             case 11:
                 filePath.add(0,"11");
-                filePath.add(1,"http://192.168.10.184:8099/golestan/katol.mp3");
-                filePath.add(2,"http://192.168.10.184:8099/golestan/katol1.mp3");
+                filePath.add(1,"http://192.168.10.85:8099/golestan/katol.mp3");
+                filePath.add(2,"http://192.168.10.85:8099/golestan/katol1.mp3");
                 txt.setText("موسسیقی گلستان");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.golestan,null));
                 break;
