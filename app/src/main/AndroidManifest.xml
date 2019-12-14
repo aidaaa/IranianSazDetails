@@ -14,13 +14,22 @@
         android:hardwareAccelerated="false"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".video.VideoPlayerActivity" />
-        <activity android:name=".music.MusicPlayerActivity" />
-        <activity android:name=".TestActivity" />
-        <activity android:name=".text.TextActivity" />
-        <activity android:name=".album.AlbumActivity" />
-        <activity android:name=".FirstPageActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".video.VideoPlayerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".music.MusicPlayerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".TestActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".text.TextActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".album.AlbumActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FirstPageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Splash"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
