@@ -6,7 +6,11 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.content.SharedPreferences;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.iraniansazdetails.R;
+
+import java.lang.ref.WeakReference;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -30,6 +36,9 @@ public class TextActivity extends Fragment {
         View view=inflater.inflate(R.layout.activity_album_text,container,false);
         txt=view.findViewById(R.id.txt);
         layout_txt=view.findViewById(R.id.layout_txt);
+        getText();
+        Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iransans.ttf");
+        txt.setTypeface(typface);
         return view;
     }
 
@@ -107,5 +116,11 @@ public class TextActivity extends Fragment {
                 break;
         }
         return text;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        System.gc();
     }
 }

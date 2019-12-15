@@ -3,7 +3,7 @@ package com.example.iraniansazdetails;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
 import com.example.iraniansazdetails.viewPager.ViewPagerAdapter;
@@ -29,7 +29,7 @@ public class MainActivity extends FragmentActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.headphones);
         tabLayout.getTabAt(1).setIcon(R.drawable.information2);
-        tabLayout.getTabAt(2).setIcon(R.drawable.picture);
+        tabLayout.getTabAt(2).setIcon(R.drawable.picture2);
         tabLayout.getTabAt(3).setIcon(R.drawable.video2);
 
 
@@ -46,7 +46,7 @@ public class MainActivity extends FragmentActivity {
                         tabLayout.getTabAt(1).setIcon(R.drawable.information);
                         break;
                     case 2:
-                        tabLayout.getTabAt(2).setIcon(R.drawable.picture2);
+                        tabLayout.getTabAt(2).setIcon(R.drawable.picture);
                         break;
                     case 3:
                         tabLayout.getTabAt(3).setIcon(R.drawable.video);
@@ -67,7 +67,7 @@ public class MainActivity extends FragmentActivity {
                         tabLayout.getTabAt(1).setIcon(R.drawable.information2);
                         break;
                     case 2:
-                        tabLayout.getTabAt(2).setIcon(R.drawable.picture);
+                        tabLayout.getTabAt(2).setIcon(R.drawable.picture2);
                         break;
                     case 3:
                         tabLayout.getTabAt(3).setIcon(R.drawable.video2);

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iraniansazdetails.R;
 import com.example.iraniansazdetails.datamodel.AlbumDataModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -18,7 +19,6 @@ public class FirstpageAdapter extends RecyclerView.Adapter<FirstpageAdapter.Firs
 {
     private Context context;
     private List<AlbumDataModel> models;
-
     private OnItemClickListener listener;
 
     public FirstpageAdapter(Context context, List<AlbumDataModel> models,OnItemClickListener listener) {
@@ -36,6 +36,7 @@ public class FirstpageAdapter extends RecyclerView.Adapter<FirstpageAdapter.Firs
 
     @Override
     public void onBindViewHolder(@NonNull FirstpageViewHolder holder, int position) {
+        //holder.onBind(models.get(holder.getAdapterPosition()));
         holder.onBind(models.get(holder.getAdapterPosition()));
     }
 

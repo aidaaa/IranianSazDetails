@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -51,6 +52,8 @@ public class VideoPlayerActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.activity_video_player,container,false);
         txt=view.findViewById(R.id.txt);
+        Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iransans.ttf");
+        txt.setTypeface(typface);
         if (isPlay)
         {
             setUpView();
@@ -325,7 +328,7 @@ public class VideoPlayerActivity extends Fragment {
                 break;
             case 9:
                 filePath.add(0,"9");
-                filePath.add(1,"http://192.168.10.85:8099/sis/baloch_sisi.mp4");
+                filePath.add(1,"http://192.168.10.85:8099/sis/baloch_sis.mp4");
                 filePath.add(2,"http://192.168.10.85:8099/sis/balochi.mp4");
                 filePath.add(3,"http://192.168.10.85:8099/sis/balochi1.mp4");
                 filePath.add(4,"http://192.168.10.85:8099/sis/sis.mp4");
@@ -379,6 +382,7 @@ public class VideoPlayerActivity extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         exoPlayer.release();
+        System.gc();
     }
 
     public static VideoPlayerActivity newInstance() {

@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -18,10 +19,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 
 import com.example.iraniansazdetails.R;
 import com.example.iraniansazdetails.album.adapter.AlbumAdapter;
-import com.example.iraniansazdetails.generator.DataGenerator;
+import com.example.iraniansazdetails.generator.PicassoDataGenerator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -43,46 +48,52 @@ public class AlbumActivity extends Fragment {
         switch (id)
         {
             case 0:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelTeh(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTeh());
                 break;
             case 1:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelTurk(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTurk());
                 break;
             case 2:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelKurd(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKurd());
                 break;
             case 3:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelLor(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelLor());
                 break;
             case 4:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelKhorasan(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKhorasan());
                 break;
             case 5:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelBakh(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelBakh());
                 break;
             case 6:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelKoli(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKoli());
                 break;
             case 7:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelMazandaran(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelMazandaran());
                 break;
             case 8:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelGilan(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelGilan());
                 break;
             case 9:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelSis(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelSis());
                 break;
             case 10:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelTurkaman(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTurkaman());
                 break;
             case 11:
-                adapter=new AlbumAdapter(getContext(), DataGenerator.getAlbumDataModelGolestan(getContext()));
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelGolestan());
                 break;
         }
 
         adapter.notifyDataSetChanged();
-        recyclerView.setLayoutManager(new GridLayoutManager(context,2));
+       // final LinearLayoutManager layoutManager = new  LinearLayoutManager(getActivity());
+        //layoutManager.setOrientation(RecyclerView.VERTICAL);
+
+        //recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 2, RecyclerView.VERTICAL,false));
+        recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
+        System.gc();
       // Animation animation= AnimationUtils.loadAnimation(view.getContext(),R.anim.clockwise);
       // animation.setRepeatCount(Animation.INFINITE);
       // animation.setRepeatMode(Animation.REVERSE);
@@ -105,4 +116,9 @@ public class AlbumActivity extends Fragment {
         this.context=context;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        System.gc();
+    }
 }

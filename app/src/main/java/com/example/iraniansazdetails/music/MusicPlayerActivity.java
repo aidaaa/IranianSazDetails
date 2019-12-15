@@ -2,6 +2,7 @@ package com.example.iraniansazdetails.music;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -52,7 +53,6 @@ public class MusicPlayerActivity extends Fragment {
     private View view;
     //PlayerControlView music_player;
     public  PlayerControlView music_player;
-
      public  SimpleExoPlayer exoPlayer;
 
     Context context;
@@ -68,6 +68,9 @@ public class MusicPlayerActivity extends Fragment {
         view=inflater.inflate(R.layout.activity_music_player,container,false);
         txt=view.findViewById(R.id.txt);
         img=view.findViewById(R.id.img);
+
+        Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iransans.ttf");
+        txt.setTypeface(typface);
 
         if (isPlay)
         {
@@ -388,6 +391,7 @@ public class MusicPlayerActivity extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         exoPlayer.release();
+        System.gc();
     }
 
     public static MusicPlayerActivity newInstance() {

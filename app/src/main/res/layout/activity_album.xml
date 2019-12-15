@@ -5,6 +5,9 @@
     android:layout_height="match_parent"  >
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:id="@+id/album_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>

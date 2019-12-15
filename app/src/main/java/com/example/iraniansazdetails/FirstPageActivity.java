@@ -13,6 +13,9 @@ import com.example.iraniansazdetails.adapter.FirstpageAdapter;
 import com.example.iraniansazdetails.datamodel.AlbumDataModel;
 import com.example.iraniansazdetails.generator.FirstPageGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FirstPageActivity extends AppCompatActivity implements FirstpageAdapter.OnItemClickListener {
 
     RecyclerView first_page_rv;
