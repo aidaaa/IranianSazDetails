@@ -4,6 +4,8 @@
     package="com.example.iraniansazdetails">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -19,8 +21,6 @@
         <activity android:name=".video.VideoPlayerActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".music.MusicPlayerActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".TestActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".text.TextActivity"
             android:screenOrientation="portrait"/>

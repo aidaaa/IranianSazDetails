@@ -12,7 +12,8 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     app:tabPaddingStart="50dp"
-    app:tabPaddingEnd="50dp"></com.google.android.material.tabs.TabLayout>
+    app:tabPaddingEnd="50dp"
+    app:tabTextAppearance="@style/tab_text"></com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"

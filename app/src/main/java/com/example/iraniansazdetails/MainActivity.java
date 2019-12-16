@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.example.iraniansazdetails.viewPager.ViewPagerAdapter;
 
@@ -17,6 +18,8 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         viewPager=findViewById(R.id.viewpager);
         tabLayout=findViewById(R.id.tab);
 

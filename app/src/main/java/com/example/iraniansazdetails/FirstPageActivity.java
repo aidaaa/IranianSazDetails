@@ -1,13 +1,20 @@
 package com.example.iraniansazdetails;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.example.iraniansazdetails.adapter.FirstpageAdapter;
 import com.example.iraniansazdetails.datamodel.AlbumDataModel;
@@ -24,12 +31,46 @@ public class FirstPageActivity extends AppCompatActivity implements FirstpageAda
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_page);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         first_page_rv=findViewById(R.id.first_page_rv);
+
 
         FirstpageAdapter adapter=new FirstpageAdapter(this, FirstPageGenerator.getFirstPageGenerator(this),this);
         adapter.notifyDataSetChanged();
         first_page_rv.setLayoutManager(new LinearLayoutManager(this));
         first_page_rv.setAdapter(adapter);
+
+        boolean isConnected=isNetworkConnected();
+        if (!isConnected)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("اتصال به اینترنت");
+            builder.setIcon(R.drawable.wifi);
+            builder.setMessage("برای نمایش تصاویر و پخش موسیقی و ویدیو نیاز به اتصال به اینترنت داریم");
+
+         /*   builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                public void onClick(DialogInterface dialog, int which) {
+                    finishAffinity();
+                }
+            });*/
+
+            builder.setNegativeButton("باشه", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+    }
+
+    public boolean isNetworkConnected()
+    {
+        ConnectivityManager cm= (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 
     @Override

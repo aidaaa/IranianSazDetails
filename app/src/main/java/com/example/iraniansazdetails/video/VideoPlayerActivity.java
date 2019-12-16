@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.iraniansazdetails.R;
@@ -51,6 +52,8 @@ public class VideoPlayerActivity extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.activity_video_player,container,false);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         txt=view.findViewById(R.id.txt);
         Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iransans.ttf");
         txt.setTypeface(typface);
