@@ -20,11 +20,13 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     private Context context;
      //List<AlbumDataModel> models;
      List<PicasooDataModel> list;
+    private onClickitem listener;
 
-    public AlbumAdapter(Context context,List<PicasooDataModel> list) {
+    public AlbumAdapter(Context context,List<PicasooDataModel> list,onClickitem listener) {
         this.context = context;
         //this.models = models;
         this.list=list;
+        this.listener=listener;
     }
 
 
@@ -38,7 +40,8 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     @Override
     public void onBindViewHolder(@NonNull AlbumViewHolder albumViewHolder, int i) {
         //AlbumDataModel main=models.get(i);
-        Picasso.with(context).load(list.get(i).getImage()).into(albumViewHolder.img);
+        albumViewHolder.onBind(list.get(i));
+       // Picasso.with(context).load(list.get(i).getImage()).into(albumViewHolder.img);
         //albumViewHolder.img.setImageDrawable(main.getImage());
     }
 
@@ -56,5 +59,16 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
             super(itemView);
             img=itemView.findViewById(R.id.img_album);
         }
+
+        public void onBind(PicasooDataModel model)
+        {
+            Picasso.with(context).load(model.getImage()).into(img);
+            itemView.setOnClickListener(view -> listener.onClick(model));
+        }
+    }
+
+    public interface onClickitem
+    {
+        void onClick(PicasooDataModel model);
     }
 }

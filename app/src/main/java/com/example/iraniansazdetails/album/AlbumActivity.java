@@ -6,8 +6,12 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -17,21 +21,26 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.iraniansazdetails.R;
 import com.example.iraniansazdetails.album.adapter.AlbumAdapter;
+import com.example.iraniansazdetails.datamodel.PicasooDataModel;
 import com.example.iraniansazdetails.generator.PicassoDataGenerator;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class AlbumActivity extends Fragment {
+public class AlbumActivity extends Fragment implements AlbumAdapter.onClickitem {
 
     RecyclerView recyclerView;
     Context context;
@@ -52,40 +61,40 @@ public class AlbumActivity extends Fragment {
         switch (id)
         {
             case 0:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTeh());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTeh(),this);
                 break;
             case 1:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTurk());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTurk(),this);
                 break;
             case 2:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKurd());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKurd(),this);
                 break;
             case 3:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelLor());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelLor(),this);
                 break;
             case 4:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKhorasan());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKhorasan(),this);
                 break;
             case 5:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelBakh());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelBakh(),this);
                 break;
             case 6:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKoli());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKoli(),this);
                 break;
             case 7:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelMazandaran());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelMazandaran(),this);
                 break;
             case 8:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelGilan());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelGilan(),this);
                 break;
             case 9:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelSis());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelSis(),this);
                 break;
             case 10:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTurkaman());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTurkaman(),this);
                 break;
             case 11:
-                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelGolestan());
+                adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelGolestan(),this);
                 break;
         }
 
@@ -124,5 +133,35 @@ public class AlbumActivity extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         System.gc();
+    }
+
+    @Override
+    public void onClick(PicasooDataModel model) {
+        String path=model.getImage();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        final AlertDialog dialog = builder.create();
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.dialog, null);
+        dialog.setView(dialogLayout);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface d) {
+                ImageView image =dialog.findViewById(R.id.goProDialogImage);
+                Picasso.with(context).load(path).into(image);
+                float imageWidthInPX = (float)image.getWidth();
+
+              //  LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(Math.round(imageWidthInPX),
+              //          Math.round(imageWidthInPX * (float)image.getHeight() / (float)image.getWidth()));
+              //  image.setLayoutParams(layoutParams);
+
+
+            }
+        });
+        dialog.show();
     }
 }
