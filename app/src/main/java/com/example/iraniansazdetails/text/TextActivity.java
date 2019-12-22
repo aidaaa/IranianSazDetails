@@ -66,7 +66,7 @@ public class TextActivity extends Fragment {
         switch (index)
         {
             case 0:
-                layout_txt.setBackground(ResourcesCompat.getDrawable(this.getResources(), R.drawable.teh_txt_back, null));
+                layout_txt.setBackground(ResourcesCompat.getDrawable(this.getResources(), R.drawable.teh_music, null));
                 txt_city.setText("موسیقی" +
                         " \n"+
                         " تهران");
