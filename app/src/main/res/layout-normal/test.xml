@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_txt"
+    android:background="@drawable/teh_txt_back">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginRight="58dp"
+        android:layout_marginBottom="63dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="اگه عاشق نيم آهم چه چيه
+    اگهِ هم، كُوشُ و كُلاهم چه چيه؟
+    ميكشي خنجر و مِهْلي و مِشي
+    نميداني كه گُناهم چه چيه؟
+    از ترانههاي ملا سحري تهراني
+    موسيقي\u200C تهران\u200C به دليل\u200C مسائل\u200C مختلف\u200C تاريخي\u200C ديني\u200C بيشتر از گونه\u200C آوازي\u200C سود مي\u200Cبرد و در اثر تحولات\u200C اين\u200C ناحيه\u200C پس\u200C از حكومت\u200C افشاريان\u200C دچار تغييرات\u200C فراوان\u200C شده\u200C است\u200C به گونه\u200Cاي\u200C كه\u200C موسيقي\u200C درباري\u200C توسط\u200C گروههاي\u200C خاص در آن شكل يافته و پيش رفته، تا جايي كه وضع اولين تئوريهاي هفت دستگاهي كردن\u200C موسيقي\u200C ايران را به يك يهودي به نام «بابا مردوخ» نسبت ميدهند و گفته ميشود كه دست نوشتههاي او كه در عهد قاجاريه نوشته بوده در عهد پهلوي دوم تعريف و تفسير علمي تري يافته و متحول ميشود، در عين حاليكه ابهاماتي نيز در اين مسئله وجود دارد." />
+
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="386dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:text="موسیقی تهران"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
