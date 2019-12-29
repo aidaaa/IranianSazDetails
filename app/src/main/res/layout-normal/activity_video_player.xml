@@ -10,11 +10,12 @@
         android:id="@+id/txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:textSize="30sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="56dp"
+        android:layout_marginRight="18dp"
         android:text="ویدیو موزیک بختیاری"
-        android:layout_alignParentRight="true"/>
+        android:textSize="30sp" />
 
     <com.google.android.exoplayer2.ui.PlayerView
         android:layout_below="@id/txt"
