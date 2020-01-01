@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class TextActivity extends Fragment {
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         txt=view.findViewById(R.id.txt1);
+        txt.setMovementMethod(new ScrollingMovementMethod());
         layout_txt=view.findViewById(R.id.layout_txt);
         txt_city=view.findViewById(R.id.textView);
         String text=getText();
