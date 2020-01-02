@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ImageView android:id="@+id/img_first_page_rv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_alignBottom="@+id/first_page_rv"
-    android:layout_margin="8dp"
-    android:layout_centerInParent="true"
     android:src="@drawable/mazandaran"
+    android:layout_margin="8dp"
     xmlns:android="http://schemas.android.com/apk/res/android" />
