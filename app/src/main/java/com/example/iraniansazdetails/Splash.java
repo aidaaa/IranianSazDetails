@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * Created by AIDA-PC on 12/19/2017.
  */
+
 public class Splash extends AppCompatActivity {
     private static int SPLASH_TIME_OUT=2000;
     @Override
