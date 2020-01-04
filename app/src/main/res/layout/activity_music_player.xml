@@ -10,11 +10,20 @@
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="94dp"
+        android:layout_height="79dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
         android:src="@drawable/teh"
-        app:civ_border_width="0dp"
-        android:layout_margin="30dp"/>
+        app:civ_border_width="0dp" />
 
     <!--<com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/img"
@@ -28,25 +37,44 @@
 
     <TextView
         android:id="@+id/txt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/img"
-        android:text="موسیقی تهران و حومه"
-        android:gravity="center"
-        android:textSize="20sp"/>
+        android:layout_width="96dp"
+        android:layout_height="14dp"
+        android:layout_below="@+id/img"
 
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="موسیقی تهران و حومه"
+        android:textSize="5sp" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:layout_above="@+id/music_player_view"
+        android:layout_below="@+id/txt"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:src="@drawable/cad" />
 
     <com.google.android.exoplayer2.ui.PlayerControlView
         android:id="@+id/music_player_view"
-        android:layout_margin="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="3dp"
         android:background="@color/white"
         app:controller_layout_id="@layout/exo_controller"
-        app:show_shuffle_button="true"
-        app:repeat_toggle_modes="one"
         app:hide_on_touch="false"
+        app:repeat_toggle_modes="one"
+        app:show_shuffle_button="true"
         app:show_timeout="0"></com.google.android.exoplayer2.ui.PlayerControlView>
 
 </RelativeLayout>

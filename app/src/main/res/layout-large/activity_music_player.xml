@@ -16,7 +16,7 @@
         app:civ_border_width="0dp"/>
 
     <TextView
-        android:id="@+id/txt_music"
+        android:id="@+id/txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/img"
@@ -24,6 +24,22 @@
         android:gravity="center"
         android:textSize="20sp"/>
 
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:layout_above="@+id/music_player_view"
+        android:layout_below="@+id/txt"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:src="@drawable/cad" />
 
     <com.google.android.exoplayer2.ui.PlayerControlView
         android:id="@+id/music_player_view"

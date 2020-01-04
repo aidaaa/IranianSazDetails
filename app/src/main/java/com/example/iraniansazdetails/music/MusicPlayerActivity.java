@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.iraniansazdetails.R;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
@@ -32,6 +34,9 @@ import com.google.android.exoplayer2.util.Util;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
+
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -47,7 +52,7 @@ public class MusicPlayerActivity extends Fragment {
     SharedPreferences prefs;
     CircularImageView img;
     TextView txt;
-
+    GifImageView gifImageView;
 
     @Nullable
     @Override
@@ -58,6 +63,9 @@ public class MusicPlayerActivity extends Fragment {
         txt=view.findViewById(R.id.txt);
         img=view.findViewById(R.id.img);
 
+        gifImageView=view.findViewById(R.id.gifImageView);
+        gifImageView.setVisibility(View.INVISIBLE);
+
         Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iransans.ttf");
         txt.setTypeface(typface);
 
@@ -65,6 +73,22 @@ public class MusicPlayerActivity extends Fragment {
         {
             setUpView();
         }
+
+        exoPlayer.addListener(new Player.EventListener() {
+            @Override
+            public void onIsPlayingChanged(boolean isPlaying) {
+               if (isPlaying)
+               {
+                   gifImageView.setVisibility(View.VISIBLE);
+                   ((GifDrawable)gifImageView.getDrawable()).start();
+               }
+               else
+               {
+                   ((GifDrawable)gifImageView.getDrawable()).stop();
+               }
+            }
+        });
+
         return view;
     }
 
@@ -72,6 +96,8 @@ public class MusicPlayerActivity extends Fragment {
 
         isPlay=false;
         ArrayList<String> list=getUrl();
+
+
         String index=list.get(0);
 
         TrackSelector trackSelector=new DefaultTrackSelector();
@@ -260,7 +286,6 @@ public class MusicPlayerActivity extends Fragment {
                 exoPlayer.prepare(concatenatingMediaSource);
                 break;
         }
-
         //exoPlayer.prepare(mediaSource);
     }
 
@@ -370,6 +395,7 @@ public class MusicPlayerActivity extends Fragment {
         return filePath;
     }
 
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -406,10 +432,39 @@ public class MusicPlayerActivity extends Fragment {
             if (context != null) {
                 if (isPlay) {
                     setUpView();
+                    exoPlayer.addListener(new Player.EventListener() {
+                        @Override
+                        public void onIsPlayingChanged(boolean isPlaying) {
+                            if (isPlaying)
+                            {
+                                gifImageView.setVisibility(View.VISIBLE);
+                                ((GifDrawable)gifImageView.getDrawable()).start();
+                            }
+                            else
+                            {
+                                ((GifDrawable)gifImageView.getDrawable()).stop();
+                            }
+                        }
+                    });
                 }
             }
         } else {
             stop();
+            exoPlayer.addListener(new Player.EventListener() {
+                @Override
+                public void onIsPlayingChanged(boolean isPlaying) {
+                    if (isPlaying)
+                    {
+                        gifImageView.setVisibility(View.VISIBLE);
+                        ((GifDrawable)gifImageView.getDrawable()).start();
+                    }
+                    else
+                    {
+                        ((GifDrawable)gifImageView.getDrawable()).stop();
+                    }
+                }
+            });
         }
     }
+
 }
