@@ -432,38 +432,44 @@ public class MusicPlayerActivity extends Fragment {
             if (context != null) {
                 if (isPlay) {
                     setUpView();
-                    exoPlayer.addListener(new Player.EventListener() {
-                        @Override
-                        public void onIsPlayingChanged(boolean isPlaying) {
-                            if (isPlaying)
-                            {
-                                gifImageView.setVisibility(View.VISIBLE);
-                                ((GifDrawable)gifImageView.getDrawable()).start();
-                            }
-                            else
-                            {
-                                ((GifDrawable)gifImageView.getDrawable()).stop();
-                            }
-                        }
-                    });
+                   if (exoPlayer!=null)
+                   {
+                       exoPlayer.addListener(new Player.EventListener() {
+                           @Override
+                           public void onIsPlayingChanged(boolean isPlaying) {
+                               if (isPlaying)
+                               {
+                                   gifImageView.setVisibility(View.VISIBLE);
+                                   ((GifDrawable)gifImageView.getDrawable()).start();
+                               }
+                               else
+                               {
+                                   ((GifDrawable)gifImageView.getDrawable()).stop();
+                               }
+                           }
+                       });
+                   }
                 }
             }
         } else {
             stop();
-            exoPlayer.addListener(new Player.EventListener() {
-                @Override
-                public void onIsPlayingChanged(boolean isPlaying) {
-                    if (isPlaying)
-                    {
-                        gifImageView.setVisibility(View.VISIBLE);
-                        ((GifDrawable)gifImageView.getDrawable()).start();
+            if (exoPlayer!=null)
+            {
+                exoPlayer.addListener(new Player.EventListener() {
+                    @Override
+                    public void onIsPlayingChanged(boolean isPlaying) {
+                        if (isPlaying)
+                        {
+                            gifImageView.setVisibility(View.VISIBLE);
+                            ((GifDrawable)gifImageView.getDrawable()).start();
+                        }
+                        else
+                        {
+                            ((GifDrawable)gifImageView.getDrawable()).stop();
+                        }
                     }
-                    else
-                    {
-                        ((GifDrawable)gifImageView.getDrawable()).stop();
-                    }
-                }
-            });
+                });
+            }
         }
     }
 
