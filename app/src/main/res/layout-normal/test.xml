@@ -24,7 +24,8 @@
         android:layout_marginRight="18dp"
         android:layout_marginBottom="12dp"
         android:gravity="center"
-        android:scrollbars="vertical"></TextView>
+        android:scrollbars="vertical"
+        android:textSize="20sp"></TextView>
 
 
     <TextView
@@ -36,13 +37,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="291dp"
-        android:layout_marginLeft="291dp"
-        android:layout_marginTop="360dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
+        android:layout_marginStart="287dp"
+        android:layout_marginLeft="287dp"
+        android:layout_marginTop="389dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
         android:text="موسیقی تهران"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
 </RelativeLayout>
