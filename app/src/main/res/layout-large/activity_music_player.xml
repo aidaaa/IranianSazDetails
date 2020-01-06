@@ -12,7 +12,7 @@
         android:layout_margin="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/teh"
+        android:src="@drawable/bakh_music"
         app:civ_border_width="0dp"/>
 
     <TextView
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:background="@color/gray"
         app:controller_layout_id="@layout/exo_controller"
         app:show_shuffle_button="true"
         app:repeat_toggle_modes="one"

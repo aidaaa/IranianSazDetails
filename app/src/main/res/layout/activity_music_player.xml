@@ -41,7 +41,7 @@
         android:layout_height="14dp"
         android:layout_below="@+id/img"
 
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="11dp"
         android:gravity="center"
         android:text="موسیقی تهران و حومه"
         android:textSize="5sp" />
@@ -70,7 +70,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="3dp"
-        android:background="@color/white"
+        android:background="@color/gray"
         app:controller_layout_id="@layout/exo_controller"
         app:hide_on_touch="false"
         app:repeat_toggle_modes="one"
