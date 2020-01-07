@@ -12,7 +12,7 @@
         android:layout_margin="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bakh_music"
+        android:src="@drawable/lor_music"
         app:civ_border_width="0dp"/>
 
     <TextView

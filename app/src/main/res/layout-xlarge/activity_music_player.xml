@@ -11,12 +11,12 @@
         android:id="@+id/img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bakh_music"
-        app:civ_border_color="#3f51b5"
+        android:src="@drawable/lor_music"
+        app:civ_border_color="@android:color/transparent"
         app:civ_border_width="4dp"
         app:civ_shadow="false"
         app:civ_shadow_radius="10"
-        app:civ_shadow_color="#3f51b5"
+        app:civ_shadow_color="@android:color/transparent"
         android:layout_margin="30dp"/>
 
     <TextView
