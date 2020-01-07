@@ -44,7 +44,7 @@ public class MusicPlayerActivity extends Fragment {
 
     private View view;
     //PlayerControlView music_player;
-    public  PlayerControlView music_player;
+     public  PlayerControlView music_player;
      public  SimpleExoPlayer exoPlayer;
 
     Context context;
@@ -66,7 +66,7 @@ public class MusicPlayerActivity extends Fragment {
         gifImageView=view.findViewById(R.id.gifImageView);
         gifImageView.setVisibility(View.INVISIBLE);
 
-        Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iransans.ttf");
+        Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iranblack.ttf");
         txt.setTypeface(typface);
 
         if (isPlay)

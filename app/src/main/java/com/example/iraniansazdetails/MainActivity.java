@@ -52,18 +52,18 @@ public class MainActivity extends FragmentActivity {
         tabLayout.getTabAt(3).setIcon(R.drawable.video2);
 
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
+    /*    AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.AlertDialogStyle);
 
         builder.setTitle("اطلاعات");
         builder.setIcon(R.drawable.teh);
         builder.setMessage(getCityInfo());
 
-         /*   builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
+         *//*   builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
                 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 public void onClick(DialogInterface dialog, int which) {
                     finishAffinity();
                 }
-            });*/
+            });*//*
 
         builder.setNegativeButton("باشه", new DialogInterface.OnClickListener() {
             @Override
@@ -73,35 +73,37 @@ public class MainActivity extends FragmentActivity {
         });
         AlertDialog alert = builder.create();
         alert.show();
-        alert.getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        alert.getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);*/
 
 
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//
-//        final AlertDialog dialog = builder.create();
-//        LayoutInflater inflater = getLayoutInflater();
-//        View dialogLayout = inflater.inflate(R.layout.text_dialog, null);
-//        dialog.setView(dialogLayout);
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//
-//
-//
-//        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-//            @Override
-//            public void onShow(DialogInterface d) {
-//                TextView txt =dialog.findViewById(R.id.dialogText);
-//                txt.setText(getCityInfo());
-//
-//                Typeface typface=Typeface.createFromAsset(getAssets(),"fonts/iransans.ttf");
-//                txt.setTypeface(typface);
-//                txt.setTypeface(typface);
-//
-//                //  LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(Math.round(imageWidthInPX),
-//                //          Math.round(imageWidthInPX * (float)image.getHeight() / (float)image.getWidth()));
-//                //  image.setLayoutParams(layoutParams);
-//            }
-//        });
-//        dialog.show();
+
+       /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+       final AlertDialog dialog = builder.create();
+       LayoutInflater inflater = getLayoutInflater();
+       View dialogLayout = inflater.inflate(R.layout.text_dialog, null);
+       dialog.setView(dialogLayout);
+       dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
+
+       dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+           @Override
+           public void onShow(DialogInterface d) {
+               TextView txt =dialog.findViewById(R.id.dialogText);
+               txt.setText(getCityInfo());
+
+               Typeface typface=Typeface.createFromAsset(getAssets(),"fonts/iransans.ttf");
+               txt.setTypeface(typface);
+               txt.setTypeface(typface);
+
+               //  LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(Math.round(imageWidthInPX),
+               //          Math.round(imageWidthInPX * (float)image.getHeight() / (float)image.getWidth()));
+               //  image.setLayoutParams(layoutParams);
+           }
+       });
+       dialog.show();*/
+
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

@@ -46,7 +46,9 @@ public class TextActivity extends Fragment {
         txt.setText(text);
         Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iransans.ttf");
         txt.setTypeface(typface);
-        txt_city.setTypeface(typface);
+
+        Typeface typface_iranblack=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iranblack.ttf");
+        txt_city.setTypeface(typface_iranblack);
         return view;
     }
 

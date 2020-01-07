@@ -6,29 +6,42 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.iraniansazdetails.R;
+import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.PlaybackParameters;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import java.util.ArrayList;
 
@@ -46,7 +59,7 @@ public class VideoPlayerActivity extends Fragment {
     Context context;
     private boolean isPlay=true;
     TextView txt;
-    SharedPreferences prefs;
+
 
     @Nullable
     @Override
@@ -55,7 +68,7 @@ public class VideoPlayerActivity extends Fragment {
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         txt=view.findViewById(R.id.txt);
-        Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iransans.ttf");
+        Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iranblack.ttf");
         txt.setTypeface(typface);
         if (isPlay)
         {
@@ -64,7 +77,7 @@ public class VideoPlayerActivity extends Fragment {
         return view;
     }
 
-    private void setUpView() {
+    public void setUpView() {
         isPlay=false;
 
         ArrayList<String> list=getUrl();
@@ -72,6 +85,7 @@ public class VideoPlayerActivity extends Fragment {
 
         TrackSelector trackSelector=new DefaultTrackSelector();
         exoPlayer= ExoPlayerFactory.newSimpleInstance(context,trackSelector);
+
 
         PlayerView playerView=view.findViewById(R.id.video_player_view);
         playerView.setPlayer(exoPlayer);
@@ -91,7 +105,7 @@ public class VideoPlayerActivity extends Fragment {
                 MediaSource mediaSource1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri2);
                 concatenatingMediaSource.addMediaSource(0,mediaSource);
                 concatenatingMediaSource.addMediaSource(1,mediaSource1);
-                exoPlayer.prepare(concatenatingMediaSource);
+
                 break;
             case "1":
                 String path_azari=list.get(1);
@@ -102,7 +116,6 @@ public class VideoPlayerActivity extends Fragment {
                 MediaSource mediaSource_azari_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_azari_1);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_azari);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_azari_1);
-                exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "2":
                 String path_kord=list.get(1);
@@ -113,7 +126,6 @@ public class VideoPlayerActivity extends Fragment {
                 MediaSource mediaSource_kord_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_kord_1);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_kord);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_kord_1);
-                exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "3":
                 String path_lor=list.get(1);
@@ -132,7 +144,6 @@ public class VideoPlayerActivity extends Fragment {
                 concatenatingMediaSource.addMediaSource(1,mediaSource_lor_1);
                 concatenatingMediaSource.addMediaSource(2,mediaSource_lor_2);
                 concatenatingMediaSource.addMediaSource(3,mediaSource_lor_3);
-                exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "4":
                 String path_khorasan=list.get(1);
@@ -151,7 +162,6 @@ public class VideoPlayerActivity extends Fragment {
                 concatenatingMediaSource.addMediaSource(1,mediaSource_khorasan_1);
                 concatenatingMediaSource.addMediaSource(2,mediaSource_khorasan_2);
                 concatenatingMediaSource.addMediaSource(3,mediaSource_khorasan_3);
-                exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "5":
                 String path_bakh=list.get(1);
@@ -162,14 +172,12 @@ public class VideoPlayerActivity extends Fragment {
                 MediaSource mediaSource_bakh_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_bakh_1);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_bakh);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_bakh_1);
-                exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "6":
                 String path_koli=list.get(1);
                 Uri uri_koli= Uri.parse(path_koli);
                 MediaSource mediaSource_koli=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_koli);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_koli);
-                exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "7":
                 String path_mazani=list.get(1);
@@ -196,7 +204,6 @@ public class VideoPlayerActivity extends Fragment {
                 concatenatingMediaSource.addMediaSource(3,mediaSource_mazani_3);
                 concatenatingMediaSource.addMediaSource(4,mediaSource_mazani_4);
                 concatenatingMediaSource.addMediaSource(5,mediaSource_mazani_5);
-                exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "8":
                 String path_gilan=list.get(1);
@@ -211,7 +218,6 @@ public class VideoPlayerActivity extends Fragment {
                 concatenatingMediaSource.addMediaSource(0,mediaSource_gilan);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_gilan_1);
                 concatenatingMediaSource.addMediaSource(2,mediaSource_gilan_2);
-                exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "9":
                 String path_sis=list.get(1);
@@ -230,7 +236,6 @@ public class VideoPlayerActivity extends Fragment {
                 concatenatingMediaSource.addMediaSource(1,mediaSource_sis_1);
                 concatenatingMediaSource.addMediaSource(2,mediaSource_sis_2);
                 concatenatingMediaSource.addMediaSource(3,mediaSource_sis_3);
-                exoPlayer.prepare(concatenatingMediaSource);
                 break;
             case "10":
                 String path_torkaman  =list.get(1);
@@ -241,7 +246,6 @@ public class VideoPlayerActivity extends Fragment {
                 MediaSource mediaSource_torkaman_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_torkaman_1);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_torkaman);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_torkaman_1);
-                exoPlayer.prepare(concatenatingMediaSource);
 
                 break;
             case "11":
@@ -253,16 +257,34 @@ public class VideoPlayerActivity extends Fragment {
                 MediaSource mediaSource_golestan_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_golestan_1);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_golestan);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_golestan_1);
-                exoPlayer.prepare(concatenatingMediaSource);
                 break;
         }
 
+        exoPlayer.prepare(concatenatingMediaSource);
+        exoPlayer.addListener(new Player.EventListener() {
+            @Override
+            public void onPlayerError(ExoPlaybackException error) {
+                    BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh);
+
+                    int imageHeight = bd.getBitmap().getHeight();
+                    int imageWidth = bd.getBitmap().getWidth();
+                    int finalImageHeghit=imageHeight+imageHeight;
+
+                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
+                    //int a=layoutParams.MATCH_PARENT-finalImageHeghit;
+                    layoutParams.height =imageHeight;
+                    layoutParams.alignWithParent=true;
+                    layoutParams.width=imageWidth;
+                    playerView.setLayoutParams(layoutParams);
+
+            }
+        });
     }
 
     public ArrayList<String> getUrl()
     {
         ArrayList<String> filePath=new ArrayList<>();
-        prefs = this.getActivity().getSharedPreferences("shared", MODE_PRIVATE);
+        SharedPreferences prefs = this.getActivity().getSharedPreferences("shared", MODE_PRIVATE);
         int id=prefs.getInt("id",0);
         switch (id)
         {

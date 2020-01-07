@@ -62,7 +62,19 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
 
         public void onBind(PicasooDataModel model)
         {
-            Picasso.with(context).load(model.getImage()).into(img);
+            Picasso.with(context).load(model.getImage())
+                    .error(R.drawable.broken)
+                    .placeholder(R.drawable.imgload)
+                    .into(img);
+
+           /* Picasso.with(context)
+                    .load("http://i.imgur.com/DvpvklR.png")
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
+                    .resizeDimen(R.dimen.list_detail_image_size,R.dimen.list_detail_image_size)
+                    .centerInside()
+                    .into(image);*/
+
             itemView.setOnClickListener(view -> listener.onClick(model));
         }
     }
