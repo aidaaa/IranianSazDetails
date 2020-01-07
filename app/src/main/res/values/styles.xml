@@ -14,7 +14,7 @@
     </style>
 
     <style name="tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
-        <item name="android:fontFamily">@fonts/iransans.ttf</item>
+        <item name="android:fontFamily">@fonts/Chamran.ttf</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -13,6 +13,7 @@
     android:layout_alignParentBottom="true"
     app:tabPaddingStart="50dp"
     app:tabPaddingEnd="50dp"
+    app:tabSelectedTextColor="@color/gray"
     app:tabTextAppearance="@style/tab_text"></com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager

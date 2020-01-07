@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -104,7 +105,7 @@ public class MainActivity extends FragmentActivity {
        });
        dialog.show();*/
 
-
+        setCustomFont();
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -114,15 +115,19 @@ public class MainActivity extends FragmentActivity {
                 {
                     case 0:
                         tabLayout.getTabAt(0).setIcon(R.drawable.headphones);
+                        setCustomFont();
                         break;
                     case 1:
                         tabLayout.getTabAt(1).setIcon(R.drawable.information);
+                        setCustomFont();
                         break;
                     case 2:
                         tabLayout.getTabAt(2).setIcon(R.drawable.picture);
+                        setCustomFont();
                         break;
                     case 3:
                         tabLayout.getTabAt(3).setIcon(R.drawable.video);
+                        setCustomFont();
                         break;
                 }
             }
@@ -135,15 +140,19 @@ public class MainActivity extends FragmentActivity {
                 {
                     case 0:
                         tabLayout.getTabAt(0).setIcon(R.drawable.headphones2);
+                        setCustomFont();
                         break;
                     case 1:
                         tabLayout.getTabAt(1).setIcon(R.drawable.information2);
+                        setCustomFont();
                         break;
                     case 2:
                         tabLayout.getTabAt(2).setIcon(R.drawable.picture2);
+                        setCustomFont();
                         break;
                     case 3:
                         tabLayout.getTabAt(3).setIcon(R.drawable.video2);
+                        setCustomFont();
                         break;
                 }
             }
@@ -154,6 +163,27 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
+    }
+
+    public void setCustomFont() {
+
+        ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
+        int tabsCount = vg.getChildCount();
+
+        for (int j = 0; j < tabsCount; j++) {
+            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+
+            int tabChildsCount = vgTab.getChildCount();
+
+            for (int i = 0; i < tabChildsCount; i++) {
+                View tabViewChild = vgTab.getChildAt(i);
+                if (tabViewChild instanceof TextView) {
+                    //Put your font in assests folder
+                    //assign name of the font here (Must be case sensitive)
+                    ((TextView) tabViewChild).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Chamran.ttf"));
+                }
+            }
+        }
     }
 
     public String getCityInfo()
