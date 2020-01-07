@@ -23,7 +23,7 @@
         android:layout_marginEnd="23dp"
         android:layout_marginRight="23dp"
         android:layout_marginBottom="11dp"
-        android:gravity="center"
+        android:gravity="right"
         android:scrollbars="vertical"></TextView>
 
 

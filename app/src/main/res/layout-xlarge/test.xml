@@ -11,7 +11,7 @@
         android:layout_width="684dp"
         android:layout_height="471dp"
         android:textSize="30sp"
-        android:gravity="center"
+        android:gravity="right"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
