@@ -22,6 +22,7 @@
         android:layout_below="@id/img"
         android:text="موسیقی تهران و حومه"
         android:gravity="center"
+        android:textStyle="bold"
         android:textSize="20sp"/>
 
     <pl.droidsonroids.gif.GifImageView

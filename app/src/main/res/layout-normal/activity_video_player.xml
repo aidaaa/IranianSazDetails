@@ -16,7 +16,8 @@
         android:layout_marginTop="56dp"
         android:layout_marginRight="18dp"
         android:text="ویدیو موزیک بختیاری"
-        android:textSize="30sp" />
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
 
     <com.google.android.exoplayer2.ui.PlayerView

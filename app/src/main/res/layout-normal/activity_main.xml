@@ -20,7 +20,8 @@
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp"
-        app:tabTextAppearance="@style/tab_text"></com.google.android.material.tabs.TabLayout>
+        app:tabTextAppearance="@style/tab_text"
+        android:background="@drawable/curve"></com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"

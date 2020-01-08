@@ -40,11 +40,11 @@
         android:layout_width="96dp"
         android:layout_height="14dp"
         android:layout_below="@+id/img"
-
+        android:textStyle="bold"
         android:layout_marginTop="11dp"
         android:gravity="center"
         android:text="موسیقی تهران و حومه"
-        android:textSize="5sp" />
+        android:textSize="10sp" />
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"

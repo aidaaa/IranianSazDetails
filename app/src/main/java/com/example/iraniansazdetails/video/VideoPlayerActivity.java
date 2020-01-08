@@ -54,6 +54,7 @@ public class VideoPlayerActivity extends Fragment {
     TrackSelector trackSelector;
     DataSource.Factory daFactory;
     public ConcatenatingMediaSource concatenatingMediaSource;
+    PlayerView playerView;
 
     private View view;
     Context context;
@@ -67,9 +68,25 @@ public class VideoPlayerActivity extends Fragment {
         view=inflater.inflate(R.layout.activity_video_player,container,false);
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        playerView=view.findViewById(R.id.video_player_view);
         txt=view.findViewById(R.id.txt);
         Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iranblack.ttf");
         txt.setTypeface(typface);
+
+        BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh);
+
+        int imageHeight = bd.getBitmap().getHeight();
+        int imageWidth = bd.getBitmap().getWidth();
+        int finalImageHeghit=imageHeight+imageHeight;
+
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
+        //int a=layoutParams.MATCH_PARENT-finalImageHeghit;
+        layoutParams.height =imageHeight;
+        layoutParams.alignWithParent=true;
+        layoutParams.width=imageWidth;
+        playerView.setLayoutParams(layoutParams);
+
         if (isPlay)
         {
             setUpView();
@@ -87,7 +104,7 @@ public class VideoPlayerActivity extends Fragment {
         exoPlayer= ExoPlayerFactory.newSimpleInstance(context,trackSelector);
 
 
-        PlayerView playerView=view.findViewById(R.id.video_player_view);
+       // PlayerView playerView=view.findViewById(R.id.video_player_view);
         playerView.setPlayer(exoPlayer);
 
         ConcatenatingMediaSource concatenatingMediaSource=new ConcatenatingMediaSource();

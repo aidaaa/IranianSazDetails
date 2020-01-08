@@ -14,6 +14,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:textSize="10sp"
+        android:textStyle="bold"
         android:text="ویدیو موزیک بختیاری"
         android:layout_alignParentRight="true"/>
 

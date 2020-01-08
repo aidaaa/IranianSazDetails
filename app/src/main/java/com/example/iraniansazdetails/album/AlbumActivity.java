@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -28,6 +29,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.iraniansazdetails.R;
 import com.example.iraniansazdetails.album.adapter.AlbumAdapter;
@@ -46,6 +48,7 @@ public class AlbumActivity extends Fragment implements AlbumAdapter.onClickitem 
     Context context;
     SharedPreferences prefs;
     AlbumAdapter adapter;
+    TextView txt_album;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,6 +57,9 @@ public class AlbumActivity extends Fragment implements AlbumAdapter.onClickitem 
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         recyclerView=view.findViewById(R.id.album_recycler);
+        txt_album=view.findViewById(R.id.txt_album);
+        Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iranblack.ttf");
+        txt_album.setTypeface(typface);
 
         prefs = this.getActivity().getSharedPreferences("shared", MODE_PRIVATE);
         int id=prefs.getInt("id",0);
@@ -62,39 +68,51 @@ public class AlbumActivity extends Fragment implements AlbumAdapter.onClickitem 
         {
             case 0:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTeh(),this);
+                txt_album.setText("گالری تصاویر تهران");
                 break;
             case 1:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTurk(),this);
+                txt_album.setText("گالری تصاویر ترک های ایران");
                 break;
             case 2:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKurd(),this);
+                txt_album.setText("گالری تصاویر کردهای ایران");
                 break;
             case 3:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelLor(),this);
+                txt_album.setText("گالری تصاویر لرهای ایران");
                 break;
             case 4:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKhorasan(),this);
+                txt_album.setText("گالری تصاویر خراسان");
                 break;
             case 5:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelBakh(),this);
+                txt_album.setText("گالری تصاویر بختیاری");
                 break;
             case 6:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKoli(),this);
+                txt_album.setText("گالری تصاویر کولیان ایران");
                 break;
             case 7:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelMazandaran(),this);
+                txt_album.setText("گالری تصاویر مازندران");
                 break;
             case 8:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelGilan(),this);
+                txt_album.setText("گالری تصاویر گیلان");
                 break;
             case 9:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelSis(),this);
+                txt_album.setText("گالری تصاویر سیستان و بلوچستان");
                 break;
             case 10:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTurkaman(),this);
+                txt_album.setText("گالری تصاویر ترکمن های ایران");
                 break;
             case 11:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelGolestan(),this);
+                txt_album.setText("گالری تصاویر گلستان");
                 break;
         }
 
