@@ -18,7 +18,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:justificationMode="inter_word"
         android:gravity="right|center_vertical"
 
         android:layout_marginStart="66dp"
