@@ -307,85 +307,85 @@ public class VideoPlayerActivity extends Fragment {
         {
             case 0:
                 filePath.add(0,"0");
-                filePath.add(1,"http://192.168.10.85:8099/teh/teh.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/teh/teh1.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/teh/teh.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/teh/teh1.mp4");
                 txt.setText("موزیک ویدیو تهران و حومه");
                 break;
 
             case 1:
                 filePath.add(0,"1");
-                filePath.add(1,"http://192.168.10.85:8099/azari/azari.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/azari/sari_galin.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/azari/azari.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/azari/sari_galin.mp4");
                 txt.setText("موزیک ویدیو ترک های ایران");
                 break;
             case 2:
                 filePath.add(0,"2");
-                filePath.add(1,"http://192.168.10.85:8099/kurdi/kurdi.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/kurdi/kurdi1.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/kurdi/kurdi.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/kurdi/kurdi1.mp4");
                 txt.setText("موزیک ویدیو کردهای ایران");
                 break;
             case 3:
                 filePath.add(0,"3");
-                filePath.add(1,"http://192.168.10.85:8099/lori/lor.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/lori/lor1.mp4");
-                filePath.add(3,"http://192.168.10.85:8099/lori/lor2.mp4");
-                filePath.add(4,"http://192.168.10.85:8099/lori/lor3.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/lori/lor.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/lori/lor1.mp4");
+                filePath.add(3,"http://79.175.176.185:7589/lori/lor2.mp4");
+                filePath.add(4,"http://79.175.176.185:7589/lori/lor3.mp4");
                 txt.setText("موزیک ویدیو لرهای ایران");
                 break;
             case 4:
                 filePath.add(0,"4");
                 txt.setText("موزیک ویدیو خراسان");
-                filePath.add(1,"http://192.168.10.85:8099/khorasan/dotar.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/khorasan/jam.mp4");
-                filePath.add(3,"http://192.168.10.85:8099/khorasan/kh_jonobi.mp4");
-                filePath.add(4,"http://192.168.10.85:8099/khorasan/navaie.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/khorasan/dotar.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/khorasan/jam.mp4");
+                filePath.add(3,"http://79.175.176.185:7589/khorasan/kh_jonobi.mp4");
+                filePath.add(4,"http://79.175.176.185:7589/khorasan/navaie.mp4");
                 break;
             case 5:
                 filePath.add(0,"5");
                 txt.setText("موزیک ویدیو بختیاری");
-                filePath.add(1,"http://192.168.10.85:8099/bakh/bakh_farhang.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/bakh/shahroz_bakh.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/bakh/bakh_farhang.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/bakh/shahroz_bakh.mp4");
                 break;
             case 6:
                 filePath.add(0,"6");
                 txt.setText("موزیک ویدیو کولیان ایران");
-                filePath.add(1,"http://192.168.10.85:8099/koli/koli.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/koli/koli.mp4");
                 break;
             case 7:
                 filePath.add(0,"7");
                 txt.setText("موزیک ویدیو مازندران");
-                filePath.add(1,"http://192.168.10.85:8099/mazani/mazani.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/mazani/mazani1.mp4");
-                filePath.add(3,"http://192.168.10.85:8099/mazani/mazani2.mp4");
-                filePath.add(4,"http://192.168.10.85:8099/mazani/mazani3.mp4");
-                filePath.add(5,"http://192.168.10.85:8099/mazani/mazani4.mp4");
-                filePath.add(6,"http://192.168.10.85:8099/mazani/mazani5.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/mazani/mazani.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/mazani/mazani1.mp4");
+                filePath.add(3,"http://79.175.176.185:7589/mazani/mazani2.mp4");
+                filePath.add(4,"http://79.175.176.185:7589/mazani/mazani3.mp4");
+                filePath.add(5,"http://79.175.176.185:7589/mazani/mazani4.mp4");
+                filePath.add(6,"http://79.175.176.185:7589/mazani/mazani5.mp4");
                 break;
             case 8:
                 filePath.add(0,"8");
-                filePath.add(1,"http://192.168.10.85:8099/gilan/gilan.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/gilan/gilan1.mp4");
-                filePath.add(3,"http://192.168.10.85:8099/gilan/gilan2.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/gilan/gilan.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/gilan/gilan1.mp4");
+                filePath.add(3,"http://79.175.176.185:7589/gilan/gilan2.mp4");
                 txt.setText("موزیک ویدیو گیلان و تالش");
                 break;
             case 9:
                 filePath.add(0,"9");
-                filePath.add(1,"http://192.168.10.85:8099/sis/baloch_sis.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/sis/balochi.mp4");
-                filePath.add(3,"http://192.168.10.85:8099/sis/balochi1.mp4");
-                filePath.add(4,"http://192.168.10.85:8099/sis/sis.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/sis/baloch_sis.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/sis/balochi.mp4");
+                filePath.add(3,"http://79.175.176.185:7589/sis/balochi1.mp4");
+                filePath.add(4,"http://79.175.176.185:7589/sis/sis.mp4");
                 txt.setText("موزیک ویدیو سیستان و بلوچستان");
                 break;
             case 10:
                 filePath.add(0,"10");
-                filePath.add(1,"http://192.168.10.85:8099/turkaman/turkaman.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/turkaman/turkaman1.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/turkaman/turkaman.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/turkaman/turkaman1.mp4");
                 txt.setText("موزیک ویدیو ترکمن های ایران");
                 break;
             case 11:
                 filePath.add(0,"11");
-                filePath.add(1,"http://192.168.10.85:8099/golestan/katol.mp4");
-                filePath.add(2,"http://192.168.10.85:8099/golestan/katol1.mp4");
+                filePath.add(1,"http://79.175.176.185:7589/golestan/katol.mp4");
+                filePath.add(2,"http://79.175.176.185:7589/golestan/katol1.mp4");
                 txt.setText("موزیک ویدیو گلستان");
                 break;
         }

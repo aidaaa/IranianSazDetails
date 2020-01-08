@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.iraniansazdetails.R;
+import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
@@ -298,96 +299,96 @@ public class MusicPlayerActivity extends Fragment {
         {
             case 0:
                 filePath.add(0,"0");
-                filePath.add(1,"http://192.168.10.85:8099/teh/teh.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/teh/teh1.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/teh/teh.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/teh/teh1.mp3");
                 txt.setText("تهران و حومه");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.teh_music,null));
                 break;
 
             case 1:
                 filePath.add(0,"1");
-                filePath.add(1,"http://192.168.10.85:8099/azari/azari.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/azari/sari_galin.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/azari/azari.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/azari/sari_galin.mp3");
                 txt.setText("ترک های ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.turk_music,null));
                 break;
             case 2:
                 filePath.add(0,"2");
-                filePath.add(1,"http://192.168.10.85:8099/kurdi/kurdi.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/kurdi/kurdi1.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/kurdi/kurdi.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/kurdi/kurdi1.mp3");
                 txt.setText("کردهای ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.kurd_music,null));
                 break;
             case 3:
                 filePath.add(0,"3");
-                filePath.add(1,"http://192.168.10.85:8099/lori/lor.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/lori/lor1.mp3");
-                filePath.add(3,"http://192.168.10.85:8099/lori/lor2.mp3");
-                filePath.add(4,"http://192.168.10.85:8099/lori/lor3.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/lori/lor.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/lori/lor1.mp3");
+                filePath.add(3,"http://79.175.176.185:7589/lori/lor2.mp3");
+                filePath.add(4,"http://79.175.176.185:7589/lori/lor3.mp3");
                 txt.setText("لرهای ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.lor_music,null));
                 break;
             case 4:
                 filePath.add(0,"4");
                 txt.setText("موسیقی خراسان");
-                filePath.add(1,"http://192.168.10.85:8099/khorasan/dotar.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/khorasan/jam.mp3");
-                filePath.add(3,"http://192.168.10.85:8099/khorasan/kh_jonobi.mp3");
-                filePath.add(4,"http://192.168.10.85:8099/khorasan/navaie.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/khorasan/dotar.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/khorasan/jam.mp3");
+                filePath.add(3,"http://79.175.176.185:7589/khorasan/kh_jonobi.mp3");
+                filePath.add(4,"http://79.175.176.185:7589/khorasan/navaie.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.khorasan_music,null));
                 break;
             case 5:
                 filePath.add(0,"5");
                 txt.setText("موسیقی بختیاری");
-                filePath.add(1,"http://192.168.10.85:8099/bakh/bakh_farhang.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/bakh/shahroz_bakh.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/bakh/bakh_farhang.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/bakh/shahroz_bakh.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.bakh_music,null));
                 break;
             case 6:
                 filePath.add(0,"6");
                 txt.setText("موسیقی کولیان ایران");
-                filePath.add(1,"http://192.168.10.85:8099/koli/koli.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/koli/koli.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.koli_music,null));
                 break;
             case 7:
                 filePath.add(0,"7");
                 txt.setText("موسیقی مازندران");
-                filePath.add(1,"http://192.168.10.85:8099/mazani/mazani.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/mazani/mazani1.mp3");
-                filePath.add(3,"http://192.168.10.85:8099/mazani/mazani2.mp3");
-                filePath.add(4,"http://192.168.10.85:8099/mazani/mazani3.mp3");
-                filePath.add(5,"http://192.168.10.85:8099/mazani/mazani4.mp3");
-                filePath.add(6,"http://192.168.10.85:8099/mazani/mazani5.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/mazani/mazani.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/mazani/mazani1.mp3");
+                filePath.add(3,"http://79.175.176.185:7589/mazani/mazani2.mp3");
+                filePath.add(4,"http://79.175.176.185:7589/mazani/mazani3.mp3");
+                filePath.add(5,"http://79.175.176.185:7589/mazani/mazani4.mp3");
+                filePath.add(6,"http://79.175.176.185:7589/mazani/mazani5.mp3");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.maz_music,null));
                 break;
             case 8:
                 filePath.add(0,"8");
-                filePath.add(1,"http://192.168.10.85:8099/gilan/gilan.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/gilan/gilan1.mp3");
-                filePath.add(3,"http://192.168.10.85:8099/gilan/gilan2.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/gilan/gilan.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/gilan/gilan1.mp3");
+                filePath.add(3,"http://79.175.176.185:7589/gilan/gilan2.mp3");
                 txt.setText("موسیقی گیلان و تالش");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.gilan_music,null));
                 break;
             case 9:
                 filePath.add(0,"9");
-                filePath.add(1,"http://192.168.10.85:8099/sis/baloch_sisi.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/sis/balochi.mp3");
-                filePath.add(3,"http://192.168.10.85:8099/sis/balochi1.mp3");
-                filePath.add(4,"http://192.168.10.85:8099/sis/sis.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/sis/baloch_sisi.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/sis/balochi.mp3");
+                filePath.add(3,"http://79.175.176.185:7589/sis/balochi1.mp3");
+                filePath.add(4,"http://79.175.176.185:7589/sis/sis.mp3");
                 txt.setText("موسیقی سیستان و بلوچستان");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.sis_music,null));
                 break;
             case 10:
                 filePath.add(0,"10");
-                filePath.add(1,"http://192.168.10.85:8099/turkaman/turkaman.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/turkaman/turkaman1.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/turkaman/turkaman.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/turkaman/turkaman1.mp3");
                 txt.setText("موسیقی ترکمن های ایران");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.turkaman_music,null));
                 break;
             case 11:
                 filePath.add(0,"11");
-                filePath.add(1,"http://192.168.10.85:8099/golestan/katol.mp3");
-                filePath.add(2,"http://192.168.10.85:8099/golestan/katol1.mp3");
+                filePath.add(1,"http://79.175.176.185:7589/golestan/katol.mp3");
+                filePath.add(2,"http://79.175.176.185:7589/golestan/katol1.mp3");
                 txt.setText("موسسیقی گلستان");
                 img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),R.drawable.gol_music,null));
                 break;
