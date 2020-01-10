@@ -74,7 +74,7 @@ public class VideoPlayerActivity extends Fragment {
         Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iranblack.ttf");
         txt.setTypeface(typface);
 
-        BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh);
+        BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh_normal);
 
         int imageHeight = bd.getBitmap().getHeight();
         int imageWidth = bd.getBitmap().getWidth();
@@ -278,24 +278,6 @@ public class VideoPlayerActivity extends Fragment {
         }
 
         exoPlayer.prepare(concatenatingMediaSource);
-        exoPlayer.addListener(new Player.EventListener() {
-            @Override
-            public void onPlayerError(ExoPlaybackException error) {
-                    BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh);
-
-                    int imageHeight = bd.getBitmap().getHeight();
-                    int imageWidth = bd.getBitmap().getWidth();
-                    int finalImageHeghit=imageHeight+imageHeight;
-
-                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
-                    //int a=layoutParams.MATCH_PARENT-finalImageHeghit;
-                    layoutParams.height =imageHeight;
-                    layoutParams.alignWithParent=true;
-                    layoutParams.width=imageWidth;
-                    playerView.setLayoutParams(layoutParams);
-
-            }
-        });
     }
 
     public ArrayList<String> getUrl()

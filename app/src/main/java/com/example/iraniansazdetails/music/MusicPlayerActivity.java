@@ -26,6 +26,7 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.PlayerControlView;
@@ -118,11 +119,17 @@ public class MusicPlayerActivity extends Fragment {
                 String path2=list.get(2);
                 Uri uri1= Uri.parse(path1);
                 Uri uri2= Uri.parse(path2);
-                MediaSource mediaSource=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri1);
-                MediaSource mediaSource1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri2);
+                MediaSource mediaSource=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri1);
+                MediaSource mediaSource1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri2);
                 concatenatingMediaSource.addMediaSource(0,mediaSource);
                 concatenatingMediaSource.addMediaSource(1,mediaSource1);
                 exoPlayer.prepare(concatenatingMediaSource);
+                exoPlayer.addListener(new Player.EventListener() {
+                    @Override
+                    public void onPlayerError(ExoPlaybackException error) {
+                        System.out.println("error");
+                    }
+                });
                 break;
             case "1":
                 String path_azari=list.get(1);

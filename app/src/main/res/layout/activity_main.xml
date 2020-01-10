@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/gray">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab"
@@ -14,6 +15,7 @@
         android:background="@drawable/curve"
         app:tabPaddingEnd="50dp"
         app:tabPaddingStart="50dp"
+        app:tabSelectedTextColor="@color/gray"
         app:tabTextAppearance="@style/tab_text"></com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
