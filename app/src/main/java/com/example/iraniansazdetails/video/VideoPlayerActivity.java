@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -20,6 +22,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,6 +37,7 @@ import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
@@ -60,6 +65,8 @@ public class VideoPlayerActivity extends Fragment {
     Context context;
     private boolean isPlay=true;
     TextView txt;
+    ProgressBar prg_video;
+    ImageButton full_scr,full_scr_exi,exo_shuffle,exo_prev,exo_play,exo_pause,exo_next,exo_repeat_toggle;
 
 
     @Nullable
@@ -70,6 +77,68 @@ public class VideoPlayerActivity extends Fragment {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         playerView=view.findViewById(R.id.video_player_view);
+
+        exo_shuffle=view.findViewById(R.id.exo_shuffle);
+        exo_prev=view.findViewById(R.id.exo_prev);
+        exo_play=view.findViewById(R.id.exo_play);
+        exo_pause=view.findViewById(R.id.exo_pause);
+        exo_next=view.findViewById(R.id.exo_next);
+        exo_repeat_toggle=view.findViewById(R.id.exo_repeat_toggle);
+
+        full_scr=view.findViewById(R.id.full_scr);
+        full_scr_exi=view.findViewById(R.id.full_scr_exi);
+
+
+        exo_shuffle.setEnabled(false);
+        exo_prev.setEnabled(false);
+        exo_play.setEnabled(false);
+        exo_pause.setEnabled(false);
+        exo_next.setEnabled(false);
+        exo_repeat_toggle.setEnabled(false);
+        full_scr.setEnabled(false);
+        full_scr_exi.setEnabled(false);
+
+        full_scr_exi.setVisibility(View.INVISIBLE);
+        full_scr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
+                //int a=layoutParams.MATCH_PARENT-finalImageHeghit;
+                layoutParams.height =layoutParams.MATCH_PARENT;
+                layoutParams.width=layoutParams.MATCH_PARENT;
+                layoutParams.setMargins(0,0,0,0);
+                playerView.setLayoutParams(layoutParams);
+                full_scr_exi.setVisibility(View.VISIBLE);
+                full_scr.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        full_scr_exi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh_normal);
+
+                int imageHeight = bd.getBitmap().getHeight();
+                int imageWidth = bd.getBitmap().getWidth();
+                int finalImageHeghit=imageHeight+imageHeight;
+
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
+                //int a=layoutParams.MATCH_PARENT-finalImageHeghit;
+
+                layoutParams.height =imageHeight;
+                layoutParams.alignWithParent=true;
+                layoutParams.width=imageWidth;
+
+                playerView.setLayoutParams(layoutParams);
+
+                full_scr_exi.setVisibility(View.INVISIBLE);
+                full_scr.setVisibility(View.VISIBLE);
+            }
+        });
+
+        prg_video=view.findViewById(R.id.prg_video);
+        prg_video.setVisibility(View.VISIBLE);
         txt=view.findViewById(R.id.txt);
         Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iranblack.ttf");
         txt.setTypeface(typface);
@@ -103,7 +172,6 @@ public class VideoPlayerActivity extends Fragment {
         TrackSelector trackSelector=new DefaultTrackSelector();
         exoPlayer= ExoPlayerFactory.newSimpleInstance(context,trackSelector);
 
-
        // PlayerView playerView=view.findViewById(R.id.video_player_view);
         playerView.setPlayer(exoPlayer);
 
@@ -118,8 +186,8 @@ public class VideoPlayerActivity extends Fragment {
                 String path2=list.get(2);
                 Uri uri1= Uri.parse(path1);
                 Uri uri2= Uri.parse(path2);
-                MediaSource mediaSource=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri1);
-                MediaSource mediaSource1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri2);
+                MediaSource mediaSource=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri1);
+                MediaSource mediaSource1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri2);
                 concatenatingMediaSource.addMediaSource(0,mediaSource);
                 concatenatingMediaSource.addMediaSource(1,mediaSource1);
 
@@ -129,8 +197,8 @@ public class VideoPlayerActivity extends Fragment {
                 String path_azari_1=list.get(2);
                 Uri uri_azari= Uri.parse(path_azari);
                 Uri uri_azari_1= Uri.parse(path_azari_1);
-                MediaSource mediaSource_azari=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_azari);
-                MediaSource mediaSource_azari_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_azari_1);
+                MediaSource mediaSource_azari=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_azari);
+                MediaSource mediaSource_azari_1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_azari_1);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_azari);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_azari_1);
                 break;
@@ -139,8 +207,8 @@ public class VideoPlayerActivity extends Fragment {
                 String path_kord_1=list.get(2);
                 Uri uri_kord= Uri.parse(path_kord);
                 Uri uri_kord_1= Uri.parse(path_kord_1);
-                MediaSource mediaSource_kord=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_kord);
-                MediaSource mediaSource_kord_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_kord_1);
+                MediaSource mediaSource_kord=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_kord);
+                MediaSource mediaSource_kord_1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_kord_1);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_kord);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_kord_1);
                 break;
@@ -153,10 +221,10 @@ public class VideoPlayerActivity extends Fragment {
                 Uri uri_lor_1= Uri.parse(path_lor_1);
                 Uri uri_lor_2= Uri.parse(path_lor_2);
                 Uri uri_lor_3= Uri.parse(path_lor_3);
-                MediaSource mediaSource_lor=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_lor);
-                MediaSource mediaSource_lor_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_lor_1);
-                MediaSource mediaSource_lor_2=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_lor_2);
-                MediaSource mediaSource_lor_3=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_lor_3);
+                MediaSource mediaSource_lor=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_lor);
+                MediaSource mediaSource_lor_1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_lor_1);
+                MediaSource mediaSource_lor_2=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_lor_2);
+                MediaSource mediaSource_lor_3=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_lor_3);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_lor);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_lor_1);
                 concatenatingMediaSource.addMediaSource(2,mediaSource_lor_2);
@@ -171,10 +239,10 @@ public class VideoPlayerActivity extends Fragment {
                 Uri uri_khorasan_1= Uri.parse(path_khorasan_1);
                 Uri uri_khorasan_2= Uri.parse(path_khorasan_2);
                 Uri uri_khorasan_3= Uri.parse(path_khorasan_3);
-                MediaSource mediaSource_khorasan=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_khorasan);
-                MediaSource mediaSource_khorasan_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_khorasan_1);
-                MediaSource mediaSource_khorasan_2=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_khorasan_2);
-                MediaSource mediaSource_khorasan_3=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_khorasan_3);
+                MediaSource mediaSource_khorasan=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_khorasan);
+                MediaSource mediaSource_khorasan_1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_khorasan_1);
+                MediaSource mediaSource_khorasan_2=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_khorasan_2);
+                MediaSource mediaSource_khorasan_3=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_khorasan_3);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_khorasan);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_khorasan_1);
                 concatenatingMediaSource.addMediaSource(2,mediaSource_khorasan_2);
@@ -185,15 +253,15 @@ public class VideoPlayerActivity extends Fragment {
                 String path_bakh_1=list.get(2);
                 Uri uri_bakh= Uri.parse(path_bakh);
                 Uri uri_bakh_1= Uri.parse(path_bakh_1);
-                MediaSource mediaSource_bakh=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_bakh);
-                MediaSource mediaSource_bakh_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_bakh_1);
+                MediaSource mediaSource_bakh=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_bakh);
+                MediaSource mediaSource_bakh_1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_bakh_1);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_bakh);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_bakh_1);
                 break;
             case "6":
                 String path_koli=list.get(1);
                 Uri uri_koli= Uri.parse(path_koli);
-                MediaSource mediaSource_koli=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_koli);
+                MediaSource mediaSource_koli=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_koli);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_koli);
                 break;
             case "7":
@@ -209,12 +277,12 @@ public class VideoPlayerActivity extends Fragment {
                 Uri uri_mazani_3= Uri.parse(path_mazani_3);
                 Uri uri_mazani_4= Uri.parse(path_mazani_4);
                 Uri uri_mazani_5= Uri.parse(path_mazani_5);
-                MediaSource mediaSource_mazani=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_mazani);
-                MediaSource mediaSource_mazani_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_mazani_1);
-                MediaSource mediaSource_mazani_2=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_mazani_2);
-                MediaSource mediaSource_mazani_3=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_mazani_3);
-                MediaSource mediaSource_mazani_4=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_mazani_4);
-                MediaSource mediaSource_mazani_5=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_mazani_5);
+                MediaSource mediaSource_mazani=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_mazani);
+                MediaSource mediaSource_mazani_1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_mazani_1);
+                MediaSource mediaSource_mazani_2=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_mazani_2);
+                MediaSource mediaSource_mazani_3=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_mazani_3);
+                MediaSource mediaSource_mazani_4=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_mazani_4);
+                MediaSource mediaSource_mazani_5=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_mazani_5);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_mazani);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_mazani_1);
                 concatenatingMediaSource.addMediaSource(2,mediaSource_mazani_2);
@@ -229,9 +297,9 @@ public class VideoPlayerActivity extends Fragment {
                 Uri uri_gilan  = Uri.parse(path_gilan);
                 Uri uri_gilan_1= Uri.parse(path_gilan_1);
                 Uri uri_gilan_2= Uri.parse(path_gilan_2);
-                MediaSource mediaSource_gilan=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_gilan);
-                MediaSource mediaSource_gilan_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_gilan_1);
-                MediaSource mediaSource_gilan_2=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_gilan_2);
+                MediaSource mediaSource_gilan=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_gilan);
+                MediaSource mediaSource_gilan_1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_gilan_1);
+                MediaSource mediaSource_gilan_2=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_gilan_2);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_gilan);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_gilan_1);
                 concatenatingMediaSource.addMediaSource(2,mediaSource_gilan_2);
@@ -245,10 +313,10 @@ public class VideoPlayerActivity extends Fragment {
                 Uri uri_sis_1= Uri.parse(path_sis_1);
                 Uri uri_sis_2= Uri.parse(path_sis_2);
                 Uri uri_sis_3= Uri.parse(path_sis_3);
-                MediaSource mediaSource_sis=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_sis);
-                MediaSource mediaSource_sis_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_sis_1);
-                MediaSource mediaSource_sis_2=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_sis_2);
-                MediaSource mediaSource_sis_3=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_sis_3);
+                MediaSource mediaSource_sis=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_sis);
+                MediaSource mediaSource_sis_1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_sis_1);
+                MediaSource mediaSource_sis_2=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_sis_2);
+                MediaSource mediaSource_sis_3=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_sis_3);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_sis);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_sis_1);
                 concatenatingMediaSource.addMediaSource(2,mediaSource_sis_2);
@@ -259,8 +327,8 @@ public class VideoPlayerActivity extends Fragment {
                 String path_torkaman_1=list.get(2);
                 Uri uri_torkaman  = Uri.parse(path_torkaman  );
                 Uri uri_torkaman_1= Uri.parse(path_torkaman_1);
-                MediaSource mediaSource_torkaman=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_torkaman);
-                MediaSource mediaSource_torkaman_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_torkaman_1);
+                MediaSource mediaSource_torkaman=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_torkaman);
+                MediaSource mediaSource_torkaman_1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_torkaman_1);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_torkaman);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_torkaman_1);
 
@@ -270,14 +338,50 @@ public class VideoPlayerActivity extends Fragment {
                 String path_golestan_1=list.get(2);
                 Uri uri_golestan  = Uri.parse(path_golestan  );
                 Uri uri_golestan_1= Uri.parse(path_golestan_1);
-                MediaSource mediaSource_golestan=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_golestan);
-                MediaSource mediaSource_golestan_1=new ExtractorMediaSource.Factory(daFactory).createMediaSource(uri_golestan_1);
+                MediaSource mediaSource_golestan=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_golestan);
+                MediaSource mediaSource_golestan_1=new ProgressiveMediaSource.Factory(daFactory).createMediaSource(uri_golestan_1);
                 concatenatingMediaSource.addMediaSource(0,mediaSource_golestan);
                 concatenatingMediaSource.addMediaSource(1,mediaSource_golestan_1);
                 break;
         }
 
         exoPlayer.prepare(concatenatingMediaSource);
+
+        exoPlayer.addListener(new Player.EventListener() {
+            @Override
+            public void onPlayerError(ExoPlaybackException error) {
+                prg_video.setVisibility(View.INVISIBLE);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("مشکل در پخش ");
+                builder.setIcon(R.drawable.video);
+                builder.setMessage("در پخش ویدیو مشکل پیش آمده لطفا مجدد تلاش کنید");
+
+                builder.setNegativeButton("باشه", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
+            @Override
+            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                if (!playWhenReady) {
+                    prg_video.setVisibility(View.INVISIBLE);
+                    exo_shuffle.setEnabled(true);
+                    exo_prev.setEnabled(true);
+                    exo_play.setEnabled(true);
+                    exo_pause.setEnabled(true);
+                    exo_next.setEnabled(true);
+                    exo_repeat_toggle.setEnabled(true);
+                    full_scr.setEnabled(true);
+                    full_scr_exi.setEnabled(true);
+                }
+            }
+        });
+
     }
 
     public ArrayList<String> getUrl()

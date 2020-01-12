@@ -1,48 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:background="#CC000000"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="bottom"
+    android:background="@color/gray"
+    android:layoutDirection="ltr"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="4dip"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="4dp">
 
-
-        <ImageButton android:id="@+id/pause"
-            style="@android:style/MediaButton.Play"
-            android:layout_gravity="center_horizontal"
-            android:contentDescription="play/pause" />
-
-        <TextView android:id="@+id/time_current"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:paddingTop="4dip"
-            android:paddingLeft="4dip"
-            android:layout_gravity="center_horizontal"
+        <ImageButton
+            android:id="@+id/full_scr_exi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="4dip" />
+            android:background="@drawable/exo_controls_fullscreen_exit"
+            />
 
-        <SeekBar
-            android:id="@+id/mediacontroller_progress"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dip"
-            android:layout_weight="1"
-            android:layout_height="32dip" />
+        <ImageButton
+            android:id="@id/exo_shuffle"
+            style="@style/ExoMediaButton.Rewind"
+            app:srcCompat="@drawable/exo_controls_shuffle_on"/>
 
-        <TextView android:id="@+id/time"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:paddingTop="4dip"
-            android:paddingRight="4dip"
-            android:layout_gravity="center_horizontal"
+        <ImageButton
+            android:id="@id/exo_prev"
+            style="@style/ExoMediaButton.Previous"/>
+
+        <ImageButton
+            android:id="@id/exo_play"
+            style="@android:style/MediaButton.Play"/>
+        <ImageButton
+            android:id="@id/exo_pause"
+            style="@style/ExoMediaButton.Pause"/>
+
+        <ImageButton
+            android:id="@id/exo_next"
+            style="@style/ExoMediaButton.Next"/>
+
+        <ImageButton
+            android:id="@id/exo_repeat_toggle"
+            style="@style/ExoMediaButton.VR"
+            app:srcCompat="@drawable/exo_controls_repeat_all"/>
+
+        <ImageButton
+            android:id="@+id/full_scr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="4dip" />
+            android:background="@drawable/exo_controls_fullscreen_enter"
+            />
+
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.exoplayer2.ui.DefaultTimeBar
+            android:id="@id/exo_progress"
+            android:layout_width="0dp"
+            android:layout_height="26dp"
+            app:played_color="@color/green"
+            app:scrubber_color="@color/green"
+            app:buffered_color="@color/green"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
 </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--  <ImageButton
+          android:id="@id/exo_prev"
+          android:tint="@color/colorPrimaryDark"
+          style="@style/ExoMediaButton.Previous"
+          android:background="@color/transparent"/>
+
+      <ImageButton
+          android:id="@id/exo_rew"
+          android:tint="@color/colorPrimaryDark"
+          style="@style/ExoMediaButton.Rewind"
+          android:background="@color/transparent"/>
+
+      <ImageButton
+          android:id="@id/exo_shuffle"
+          android:tint="@color/colorPrimaryDark"
+          style="@style/ExoMediaButton.Shuffle"
+          android:background="@color/transparent"/>
+
+      <ImageButton
+          android:id="@id/exo_repeat_toggle"
+          android:tint="@color/colorPrimaryDark"
+          style="@style/ExoMediaButton"
+          android:background="@color/transparent"/>-->

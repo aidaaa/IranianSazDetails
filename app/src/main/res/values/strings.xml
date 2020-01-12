@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">آشنایی با سازهای نواحی ایران</string>
+    <string name="app_name">آشنایی با موسیقی نواحی ایران</string>
     <string name="title_activity_fragment_one">FragmentOne</string>
     <string name="title_activity_fragment_two">FragmentTwo</string>
     <string name="title_activity_tab">TabActivity</string>

@@ -7,16 +7,24 @@
     tools:context=".MainActivity"
     android:background="@color/gray">
 
-<com.google.android.material.tabs.TabLayout
-    android:id="@+id/tab"
-    android:background="@drawable/curve"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    app:tabPaddingStart="50dp"
-    app:tabPaddingEnd="50dp"
-    app:tabSelectedTextColor="@color/gray"
-    app:tabTextAppearance="@style/tab_text"></com.google.android.material.tabs.TabLayout>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:background="@drawable/curve"
+        app:tabPaddingEnd="50dp"
+        app:tabPaddingStart="50dp"
+        app:tabSelectedTextColor="@color/gray"
+        app:tabTextAppearance="@style/tab_text"></com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"

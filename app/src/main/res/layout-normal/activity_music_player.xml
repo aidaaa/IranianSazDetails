@@ -20,10 +20,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/img"
-        android:text="موسیقی تهران و حومه"
+        android:layout_marginTop="40dp"
         android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:text="موسیقی تهران و حومه"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
