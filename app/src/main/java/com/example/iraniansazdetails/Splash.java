@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.BigineerActivity;
+
 /**
  * Created by AIDA-PC on 12/19/2017.
  */
@@ -25,7 +27,7 @@ public class Splash extends AppCompatActivity {
          new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
-                Intent homeintent=new Intent(Splash.this,FirstPageActivity.class);
+                Intent homeintent=new Intent(Splash.this, BigineerActivity.class);
                 startActivity(homeintent);
                 finish();
             }

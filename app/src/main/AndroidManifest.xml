@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name="com.example.BigineerActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
