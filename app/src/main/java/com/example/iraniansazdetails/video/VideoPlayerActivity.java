@@ -66,7 +66,7 @@ public class VideoPlayerActivity extends Fragment {
     private boolean isPlay=true;
     TextView txt;
     ProgressBar prg_video;
-    ImageButton full_scr,full_scr_exi,exo_shuffle,exo_prev,exo_play,exo_pause,exo_next,exo_repeat_toggle;
+    ImageButton full_scr,full_scr_exi,exo_prev,exo_play,exo_pause,exo_next;
 
 
     @Nullable
@@ -78,23 +78,23 @@ public class VideoPlayerActivity extends Fragment {
 
         playerView=view.findViewById(R.id.video_player_view);
 
-        exo_shuffle=view.findViewById(R.id.exo_shuffle);
+      // exo_shuffle=view.findViewById(R.id.exo_shuffle);
         exo_prev=view.findViewById(R.id.exo_prev);
         exo_play=view.findViewById(R.id.exo_play);
         exo_pause=view.findViewById(R.id.exo_pause);
         exo_next=view.findViewById(R.id.exo_next);
-        exo_repeat_toggle=view.findViewById(R.id.exo_repeat_toggle);
+        //exo_repeat_toggle=view.findViewById(R.id.exo_repeat_toggle);
 
         full_scr=view.findViewById(R.id.full_scr);
         full_scr_exi=view.findViewById(R.id.full_scr_exi);
 
 
-        exo_shuffle.setEnabled(false);
+       // exo_shuffle.setEnabled(false);
         exo_prev.setEnabled(false);
         exo_play.setEnabled(false);
         exo_pause.setEnabled(false);
         exo_next.setEnabled(false);
-        exo_repeat_toggle.setEnabled(false);
+        //exo_repeat_toggle.setEnabled(false);
         full_scr.setEnabled(false);
         full_scr_exi.setEnabled(false);
 
@@ -370,12 +370,12 @@ public class VideoPlayerActivity extends Fragment {
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
                 if (!playWhenReady) {
                     prg_video.setVisibility(View.INVISIBLE);
-                    exo_shuffle.setEnabled(true);
+                   // exo_shuffle.setEnabled(true);
                     exo_prev.setEnabled(true);
                     exo_play.setEnabled(true);
                     exo_pause.setEnabled(true);
                     exo_next.setEnabled(true);
-                    exo_repeat_toggle.setEnabled(true);
+                    //exo_repeat_toggle.setEnabled(true);
                     full_scr.setEnabled(true);
                     full_scr_exi.setEnabled(true);
                 }

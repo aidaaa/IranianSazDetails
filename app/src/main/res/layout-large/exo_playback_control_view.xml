@@ -22,10 +22,10 @@
             android:background="@drawable/exo_controls_fullscreen_exit"
             />
 
-        <ImageButton
+<!--        <ImageButton
             android:id="@id/exo_shuffle"
             style="@style/ExoMediaButton.Rewind"
-            app:srcCompat="@drawable/exo_controls_shuffle_on"/>
+            app:srcCompat="@drawable/exo_controls_shuffle_on"/>-->
 
         <ImageButton
             android:id="@id/exo_prev"
@@ -41,11 +41,13 @@
         <ImageButton
             android:id="@id/exo_next"
             style="@style/ExoMediaButton.Next"/>
+<!--
 
         <ImageButton
             android:id="@id/exo_repeat_toggle"
             style="@style/ExoMediaButton.VR"
             app:srcCompat="@drawable/exo_controls_repeat_all"/>
+-->
 
         <ImageButton
             android:id="@+id/full_scr"
