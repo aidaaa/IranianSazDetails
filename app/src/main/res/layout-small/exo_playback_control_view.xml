@@ -24,10 +24,10 @@
             android:background="@drawable/exo_controls_fullscreen_exit"
             />
 
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+       <ImageButton
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="1"
             android:id="@id/exo_shuffle"
             style="@style/ExoMediaButton.Rewind"
             app:srcCompat="@drawable/exo_controls_shuffle_on"/>

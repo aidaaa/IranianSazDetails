@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bakh_txt_back"
-    android:weightSum="9">
+    android:weightSum="10">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,12 +14,10 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="161dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="موسیقی تهران"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="موسیقی سیستان و بلوچستان"
         android:layout_gravity="right"
         android:textSize="10sp"
         android:textStyle="bold" />
@@ -39,9 +37,10 @@
             android:layout_weight="3">
             <TextView
                 android:id="@+id/txt1"
-                android:layout_width="522dp"
-                android:layout_height="350dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
+                android:layout_marginBottom="10dp"
                 android:layout_below="@+id/textView"
                 android:scrollbars="vertical"
                 android:textSize="20sp"></TextView>

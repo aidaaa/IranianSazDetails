@@ -13,44 +13,61 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingTop="4dp">
+        android:paddingTop="4dp"
+        android:weightSum="8">
 
         <ImageButton
             android:id="@+id/full_scr_exi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@drawable/exo_controls_fullscreen_exit"
             />
 
-       <!-- <ImageButton
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:id="@id/exo_shuffle"
             style="@style/ExoMediaButton.Rewind"
-            app:srcCompat="@drawable/exo_controls_shuffle_on"/>-->
+            app:srcCompat="@drawable/exo_controls_shuffle_on"/>
 
         <ImageButton
-            android:id="@id/exo_prev"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"            android:id="@id/exo_prev"
             style="@style/ExoMediaButton.Previous"/>
 
         <ImageButton
-            android:id="@id/exo_play"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"            android:id="@id/exo_play"
             style="@android:style/MediaButton.Play"/>
         <ImageButton
-            android:id="@id/exo_pause"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"            android:id="@id/exo_pause"
             style="@style/ExoMediaButton.Pause"/>
 
         <ImageButton
-            android:id="@id/exo_next"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"            android:id="@id/exo_next"
             style="@style/ExoMediaButton.Next"/>
 
-       <!-- <ImageButton
+        <ImageButton
             android:id="@id/exo_repeat_toggle"
             style="@style/ExoMediaButton.VR"
-            app:srcCompat="@drawable/exo_controls_repeat_all"/>-->
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/exo_controls_repeat_all"/>
 
         <ImageButton
             android:id="@+id/full_scr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@drawable/exo_controls_fullscreen_enter"
             />
 
