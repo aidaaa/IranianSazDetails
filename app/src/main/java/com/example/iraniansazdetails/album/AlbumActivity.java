@@ -49,6 +49,7 @@ public class AlbumActivity extends Fragment implements AlbumAdapter.onClickitem 
     SharedPreferences prefs;
     AlbumAdapter adapter;
     TextView txt_album;
+    int id;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,50 +70,62 @@ public class AlbumActivity extends Fragment implements AlbumAdapter.onClickitem 
             case 0:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTeh(),this);
                 txt_album.setText("گالری تصاویر تهران");
+                id=0;
                 break;
             case 1:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTurk(),this);
                 txt_album.setText("گالری تصاویر ترک های ایران");
+                id=1;
                 break;
             case 2:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKurd(),this);
                 txt_album.setText("گالری تصاویر کردهای ایران");
+                id=2;
                 break;
             case 3:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelLor(),this);
                 txt_album.setText("گالری تصاویر لرهای ایران");
+                id=3;
                 break;
             case 4:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKhorasan(),this);
                 txt_album.setText("گالری تصاویر خراسان");
+                id=4;
                 break;
             case 5:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelBakh(),this);
                 txt_album.setText("گالری تصاویر بختیاری");
+                id=5;
                 break;
             case 6:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelKoli(),this);
                 txt_album.setText("گالری تصاویر کولیان ایران");
+                id=6;
                 break;
             case 7:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelMazandaran(),this);
                 txt_album.setText("گالری تصاویر مازندران");
+                id=7;
                 break;
             case 8:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelGilan(),this);
                 txt_album.setText("گالری تصاویر گیلان");
+                id=8;
                 break;
             case 9:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelSis(),this);
                 txt_album.setText("گالری تصاویر سیستان و بلوچستان");
+                id=9;
                 break;
             case 10:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelTurkaman(),this);
                 txt_album.setText("گالری تصاویر ترکمن های ایران");
+                id=10;
                 break;
             case 11:
                 adapter=new AlbumAdapter(getContext(), PicassoDataGenerator.getAlbumDataModelGolestan(),this);
                 txt_album.setText("گالری تصاویر گلستان");
+                id=11;
                 break;
         }
 
@@ -164,7 +177,9 @@ public class AlbumActivity extends Fragment implements AlbumAdapter.onClickitem 
         dialog.setView(dialogLayout);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-
+        if (id==0) {
+            dialog.setMessage("دونَوازی سرنا و دهل لرهای قرچک");
+        }
 
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override

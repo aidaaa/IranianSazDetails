@@ -143,18 +143,79 @@ public class VideoPlayerActivity extends Fragment {
         Typeface typface=Typeface.createFromAsset(getActivity().getAssets(),"fonts/iranblack.ttf");
         txt.setTypeface(typface);
 
-        BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh_normal);
 
-        int imageHeight = bd.getBitmap().getHeight();
-        int imageWidth = bd.getBitmap().getWidth();
-        int finalImageHeghit=imageHeight+imageHeight;
+        if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                Configuration.SCREENLAYOUT_SIZE_NORMAL)
+        {
+            BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh_normal);
 
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
-        //int a=layoutParams.MATCH_PARENT-finalImageHeghit;
-        layoutParams.height =imageHeight;
-        layoutParams.alignWithParent=true;
-        layoutParams.width=imageWidth;
-        playerView.setLayoutParams(layoutParams);
+            int imageHeight = bd.getBitmap().getHeight();
+            int imageWidth = bd.getBitmap().getWidth();
+            int finalImageHeghit=imageHeight+imageHeight;
+
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
+            //int a=layoutParams.MATCH_PARENT-finalImageHeghit;
+            layoutParams.height =imageHeight;
+            layoutParams.alignWithParent=true;
+            layoutParams.width=imageWidth;
+            playerView.setLayoutParams(layoutParams);
+        }
+
+        if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                Configuration.SCREENLAYOUT_SIZE_LARGE)
+        {
+            BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh_normal);
+
+            int imageHeight = bd.getBitmap().getHeight();
+            int imageWidth = bd.getBitmap().getWidth();
+            int finalImageHeghit=imageHeight+imageHeight;
+
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
+            //int a=layoutParams.MATCH_PARENT-finalImageHeghit;
+            layoutParams.height =imageHeight;
+            layoutParams.alignWithParent=true;
+            layoutParams.width=imageWidth;
+            playerView.setLayoutParams(layoutParams);
+        }
+
+        if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                Configuration.SCREENLAYOUT_SIZE_XLARGE)
+        {
+            BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh_normal);
+
+            int imageHeight = bd.getBitmap().getHeight();
+            int imageWidth = bd.getBitmap().getWidth();
+            int finalImageHeghit=imageHeight+imageHeight;
+
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
+            //int a=layoutParams.MATCH_PARENT-finalImageHeghit;
+            layoutParams.height =imageHeight;
+            layoutParams.alignWithParent=true;
+            layoutParams.width=imageWidth;
+            playerView.setLayoutParams(layoutParams);
+        }
+
+        if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                Configuration.SCREENLAYOUT_SIZE_SMALL)
+        {
+            BitmapDrawable bd = (BitmapDrawable) getResources().getDrawable(R.drawable.bakh_normal);
+
+            int imageHeight = bd.getBitmap().getHeight();
+            int imageWidth = bd.getBitmap().getWidth();
+            int finalImageHeghit=imageHeight+imageHeight;
+
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
+            //int a=layoutParams.MATCH_PARENT-finalImageHeghit;
+            layoutParams.height =imageHeight;
+            layoutParams.alignWithParent=true;
+            layoutParams.width=imageWidth;
+            playerView.setLayoutParams(layoutParams);
+        }
+
 
         if (isPlay)
         {
