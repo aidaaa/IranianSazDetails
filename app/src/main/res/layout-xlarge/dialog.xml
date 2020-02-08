@@ -4,10 +4,24 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+
     <ImageView
         android:layout_gravity="center"
         android:id="@+id/goProDialogImage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:src="@drawable/bakh"/>
+    <TextView
+        android:text="klfjerlkgvjnerlkvg"
+        android:id="@+id/dialogTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/goProDialogImage"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"/>
 
 </LinearLayout>

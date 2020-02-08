@@ -145,7 +145,6 @@ public class PicassoDataGenerator
         return models;
     }
 
-
     public static List<PicasooDataModel> getAlbumDataModelTeh( ) {
         List<PicasooDataModel> models = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
